@@ -7,7 +7,7 @@
   background-color: rgba(59, 59, 59, 0.5);
   z-index: 500;
 
-  display: flex;
+  display: none;/* flex; will be toggled by javascript */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -27,18 +27,23 @@
 
   font-size: 12pt;
 
-  height: 40vh;
-  width: 40vw;
-  padding: 1em;
+  height: 55vh;
+  width: 75vh;
+  padding: 2.5em;
   background-color: white;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+#user-type-form .form-instructions {
+  width: max-content;
 }
 
 #overlay .radio-buttons-wrapper {
+  align-self: stretch;
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -100,14 +100,14 @@
 <body style="background-color: white;">
 	<div id="overlay">
 		<form onsubmit="userTypeOnSubmit()" id="user-type-form">
-			<p class="text">Select user type</p>
+			<p class="text form-instructions">Select user type</p>
 			<div class="radio-buttons-wrapper">
 				<span>
 					<input type="radio" name="user-type" value="Teacher">
 					<p class="text">Teacher</p>
 				</span>
 				<span>
-					<input type="radio" name="user-type" value="Volunteer">
+					<input type="radio" name="user-type" value="Volunteer" checked>
 					<p class="text">Student</p>
 				</span>
 			</div>
@@ -139,7 +139,7 @@
 		</div>
 		</div>
 		<span id="login-span">
-			<button type="button" id="login-button" onclick="googleLogin()" href="#">
+			<button type="button" id="login-button" onclick="toggleOverlay(), googleLogin()" href="#">
 				Login
 			</button>
 		</span>
