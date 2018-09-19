@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Computer Science for Kids | CS4K </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="icon" type="image/png" href="james-edited-photos/cs4k_logo.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/contact.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main_page.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script>
+		// the following code allows the navbar to change to a solid color after scrolling
+		// references:
+		// https://www.w3schools.com/howto/howto_js_sticky_header.asp
+		// https://codepen.io/Abdel-fattah/pen/grXOak
+
+		$(document).ready(function () {
+			$(window).scroll(function () {
+				var scroll = $(window).scrollTop();
+				if (scroll > 50) {
+					$(".navbar").css("background", "#f2b742");
+				}
+
+				else {
+					$(".navbar").css("background", "linear-gradient(180deg, #95751db3, #c0962500 100%)");
+				}
+			})
+		})
+
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			// Add smooth scrolling to all links
+			$("a").on('click', function (event) {
+
+				// Make sure this.hash has a value before overriding default behavior
+				if (this.hash !== "") {
+					// Prevent default anchor click behavior
+					event.preventDefault();
+
+					// Store hash
+					var hash = this.hash;
+
+					// Using jQuery's animate() method to add smooth page scroll
+					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					$('html, body').animate({
+						scrollTop: $(hash).offset().top
+					}, 800, function () {
+
+						// Add hash (#) to URL when done scrolling (default click behavior)
+						window.location.hash = hash;
+					});
+				} // End if
+			});
+		});
+
+		function resizeHeaderOnScroll() {
+			const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+				shrinkOn = 10,
+				headerEl = document.getElementById('navbar');
+			var logoChange = document.getElementById('brand');
+
+			if (distanceY > shrinkOn) {
+				headerEl.classList.add("smaller");
+				//logoChange.style.height = '55px';
+			} else {
+				headerEl.classList.remove("smaller");
+				//logoChange.style.height = '130px';
+			}
+		}
+
+		window.addEventListener('scroll', resizeHeaderOnScroll);
+
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123959934-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-123959934-1');
+	</script>
+</head>
+
+<body style="background-color: white;">
+	<div id="overlay">
+		<form onsubmit="userTypeOnSubmit()" id="user-type-form">
+			<p class="text">Select user type</p>
+			<div id="radio-buttons-wrapper">
+				<span>
+					<input type="radio" name="user-type" value="Teacher">
+					<p class="text">Teacher</p>
+				</span>
+				<span>
+					<input type="radio" name="user-type" value="Volunteer">
+					<p class="text">Student</p>
+				</span>
+			</div>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<nav class="navbar navbar-inverse sticky" id="navbar" style="border: 0px; margin-bottom: 50px; position: fixed">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="top: 12px;">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#home">
+				<img src="media/cs4klogo-white.png" alt="logo" id="logo" />
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navigation-menu" style="height: 1px;">
+			<ul class="nav navbar-nav" id="navbar-items">
+				<li><a href="#about_us">About</a></li>
+				<li><a href="#volunteers">Volunteer</a></li>
+				<li><a href="#team">Team</a></li>
+				<li><a href="#faq">FAQ</a></li>
+				<li><a href="#Contact_Us">Contact</a></li>
+				<li><a href="#partners">Partners</a></li>
+				<li><a href="#follow-us">Follow Us</a></li>
+			</ul>
+		</div>
+		</div>
+		<span id="login-span">
+			<button type="button" id="login-button" onclick="googleLogin()" href="#">
+				Login
+			</button>
+		</span>
+	</nav>
+
+	<div class="main-pic">
+		<a id="home"></a>
+		<img src="james-edited-photos/test2-yellow.png" style="width:100%" id="home-pic">
+	</div>
+
+	<div class="main" id="main">
+		<a id="about_us"></a>
+		<div class="empty-block">
+		</div>
+		<div style="clear: both;"></div>
+		<section id="page2" class="about_us clear">
+			<h1 class=block_title>
+				About Us
+			</h1>
+			<div class="full-padded">
+				<p>Computer Science for Kids (CS4K) is a student-run community service organization that provides UC Davis students
+					the opportunity to apply their computer science knowledge and experience in the classrooms. CS4K strives to give
+					every child an opportunity to learn computer science and to spark their interest in the field as a possible career
+					path.</p>
+			</div>
+	</div>
+
+	<div class="container">
+
+		<div class="image-wrapper">
+			<a href="https://www.davisenterprise.com/features/next-generation/ucd-students-bring-programming-lessons-to-st-james/">
+				<img src="media/media-coverage.png" alt="media-coverage" id="media-coverage">
+			</a>
+		</div>
+
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="CS4K-Images/IMG_7949.jpg" alt="ipad" style="width:100%;">
+				</div>
+
+				<div class="item">
+					<img src="CS4K-Images/IMG_7966.jpg" alt="presentation" style="width:100%;">
+				</div>
+
+				<div class="item">
+					<img src="CS4K-Images/IMG_7938.jpg" alt="question" style="width:100%;">
+				</div>
+
+				<div class="item">
+					<img src="CS4K-Images/IMG_7978.jpg" alt="debuging2" style="width:100%;">
+				</div>
+			</div>
+
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<div id="about-wrapper-2">
+		<div id="colored-about-wrapper">
+			<section id="Mission-statement">
+				<div class="text-wrapper">
+					<h2>History</h2>
+					<p>
+						Computer Science for Kids was founded by Karen Chan in (year). CS4K has grew ever since and has had over (number)
+						many volunteers support our cause. We have partnered with various schools in and around Davis California where
+						our volunteers prepare and conduct lessons for a diverse group of students and help them build their own
+						projects.
+					</p>
+				</div>
+			</section>
+		</div>
+		<div id="family-wrap">
+			<img src="james-edited-photos/family-3218883_640.png" alt="family" id="family-image">
+		</div>
+	</div>
+
+
+	<div id="page3" class="resources">
+		<div style="clear: both;"></div>
+		<a id="volunteers" class="smooth"></a>
+		<div class="empty-block"></div>
+		<h1 class=block_title>
+			Volunteer
+		</h1>
+		<div class="full-padded">
+			<p>
+				In CS4K, UC Davis volunteers are passionate about computer science and teaching. Our volunteers visit different
+				schools in the Davis and Woodland communities, where they introduce the fundamentals of computer science to
+				elementary and middle school students through programming tools, such as Scratch MIT, Swift Playgrounds, and more.
+			</p>
+		</div>
+		<section class="float-left half-padded-left">
+			<h1 class=block_title>
+				Join us!
+			</h1>
+			<p>
+				We are currently looking for volunteers for 2018-2019.
+			</p>
+			<a href="https://cs4k.us15.list-manage.com/subscribe?u=ded5926dbec81bac112cd4adb&id=4b13d69b55" class="btn btn-info"
+			 id="apply-btn" role="button" target="_blank">Apply</a>
+			<br><br>
+			<a href="https://docs.google.com/document/d/1mlIBPf-zZWL_IvytKeo9KVcojxGFt78PQ1XQGmgS-d8/edit" class="btn btn-info"
+			 id="resources-btn" role="button" target="_blank">Resources</a>
+		</section>
+		<img class="float-left half-padded-right" src="james-edited-photos/volunteers-new.png">
+	</div>
+	<br>
+	<div style="clear: both;"></div> <!-- prevents floating elements -->
+	<div id="wrap-page4">
+		<section id="page4" class="team">
+			<a id="team"></a>
+			<div class="empty-block"></div>
+			<div style="clear: both;"></div>
+			<h1 class=block_title>
+				Team
+			</h1>
+			<div class="empty-block"></div>
+			<div id="Team_photos">
+				<div style="clear: both;"></div>
+				<div class="board_photo">
+					<img src="officer-pics/Karen-Chan.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Karen Chen<br></strong>
+						<span style="color: grey;">Founder/Co-President</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/Jasmine-Talavera1.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Jasmine-Celine Talavera<br></strong>
+						<span style="color: grey;">Co-President</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Andrew Tsung<br></strong>
+						<span style="color: grey;">Community Relations Director</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic">
+					<p style="text-align: center;">
+						<strong>Sadaf Arshad<br></strong>
+						<span style="color: grey;">Treasurer</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Jess Nguyen<br></strong>
+						<span style="color: grey;">Marketing & Publicity Director</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Isabel Kalogiannis<br></strong>
+						<span style="color: grey;">Marketing & Publicity Director</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Vivienne Zing<br></strong>
+						<span style="color: grey;">Design Chair</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Hajra Mobashar<br></strong>
+						<span style="color: grey;">Technology Chair</span>
+					</p>
+				</div>
+				<div class="board_photo">
+					<img src="officer-pics/wild-penguin.jpg" class="officer_pic" style="max-width:100%; height:auto">
+					<p style="text-align: center;">
+						<strong>Jose Alvarado<br></strong>
+						<span style="color: grey;">Technology Chair</span>
+					</p>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div id="wrap-page5">
+		<section id="page5" class="Faq">
+			<a id="faq"></a>
+			<div class="empty-block">
+			</div>
+			<div style="clear: both;"></div>
+			<h1 class="block_title">Frequently Asked Questions</h1>
+			<br><br>
+			<img class="float-left faq-left" src="james-edited-photos/Faqs_Penguin.png">
+			<div class="float-right faq-right">
+
+
+				<p class="accordion">Q1. Who can volunteer?</p>
+				<div class="panel">A. Anyone with a passion for computer science and teaching can volunteer! If you would like to
+					become a volunteer, please apply <a href="https://cs4k.us15.list-manage.com/subscribe?u=ded5926dbec81bac112cd4adb&id=4b13d69b55">here</a>.</div>
+
+				<p class="accordion">Q2. What will I do as a volunteer?</p>
+				<div class="panel">A. As a volunteer, you will teach weekly lessons to guide students on their project. These
+					lesson plans will be provided to you, or you may create your own lesson plans.
+				</div>
+
+				<p class="accordion">Q3. Is it possible to receive units for volunteering?</p>
+				<div class="panel">A. Yes, students with 84 units or more are eligible to receive ECS 197T units towards
+					graduation. Each unit requires 3 hours per week.</div>
+
+				<p class="accordion">Q4. How can I partner with CS4K? </p>
+				<div class="panel">A. CS4K is always looking for new schools, sponsors, and organizations to collaborate with. If
+					you are interested, please contact us <a href="mailto:ucd.cs4k@gmail.com">here</a>.</div>
+
+				<p class="accordion">Q5. Where do I go if I still have questions about the program?</p>
+				<div class="panel">A. Please contact us <a href="mailto:ucd.cs4k@gmail.com">here</a> with your questions. A member
+					from our team will respond within 2-3 days.</div>
+			</div>
+		</section>
+	</div>
+
+	<div style="clear: both;"></div>
+	<div id="wrap-page6">
+		<a id="Contact_Us"></a>
+		<div class="empty-block">
+		</div>
+		<div style="clear: both;"></div>
+		<h1 class="block_title">Contact</h1>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="well" style="margin-top: 10%;">
+					<h3>Send us a message</h3>
+					<form role="form" id="contactForm" data-toggle="validator" class="shake">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<label for="name" class="h4">Name</label>
+								<input type="text" class="form-control" id="sender" placeholder="Enter name" required data-error="Enter name">
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group col-sm-6">
+								<label for="email" class="h4">Email</label>
+								<input type="email" class="form-control" id="email" placeholder="Enter email" required>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="message" class="h4 ">Message</label>
+							<textarea id="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+							<div class="help-block with-errors"></div>
+						</div>
+						<button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Submit</button>
+						<div id="msgSubmit" class="h3 text-center hidden"></div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section id="partners-section" class="partners">
+		<a id="partners"></a>
+		<h1 class="block_title">Partners</h1>
+		<div id="partners-div">
+			<ul class="partners" id="partners-content">
+				<li><img src="james-edited-photos/image1.PNG" alt="SRRC" id="SRRC-logo"></li>
+				<li><img src="james-edited-photos/sticker-mule (1).png" alt="stickerMule" id="sticker-mule-logo"></li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="follow-us-section" class="follow-us">
+		<a id="follow-us"></a>
+		<p> © CS4K 2018 </p>
+		<div class="follow-us" id="follow-us-content">
+			<ul class="follow-us" id="follow-us-icons">
+				<li><a href="mailto:ucd.cs4k@gmail.com"><img src="media/gmail-icon.png" alt="gmail" id="gmail"></a></li>
+				<li><a href="https://www.facebook.com/ucd.cs4k/"><img src="media/facebook-icon.png" alt="facebook" id="facebook"></a></li>
+				<li><a href="https://www.instagram.com/cs4kids/?hl=en"><img src="media/instagram-icon.png" alt="instagram" id="instagram"></a></li>
+				<li><a href="https://www.twitter.com/cs4kidz"><img src="media/twitter-icon.png" alt="twitter" id="twitter"></a></li>
+				<!-- <li><a href="https://www.linkedin.com/company/cs4k/"><img src="media/linkedin-icon.png" alt="linkedin" id="linkedin"></a></li>	 -->
+			</ul>
+		</div>
+	</section>
+
+
+	<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyBUdKM4sezYfxczl-aOSqBzg45C5kIOUOI",
+			authDomain: "cs4kwebsite.firebaseapp.com",
+			databaseURL: "https://cs4kwebsite.firebaseio.com",
+			projectId: "cs4kwebsite",
+			storageBucket: "cs4kwebsite.appspot.com",
+			messagingSenderId: "804641345230"
+		};
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+	</script>
+
+	<script src="./js/login.js"></script>
+
+	<script type="text/javascript" src="js/validator.min.js"></script>
+	<script type="text/javascript" src="js/form-scripts.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function (event) {
+
+
+			var acc = document.getElementsByClassName("accordion");
+			var panel = document.getElementsByClassName('panel');
+
+			for (var i = 0; i < acc.length; i++) {
+				acc[i].onclick = function () {
+					var setClasses = !this.classList.contains('active');
+					setClass(acc, 'active', 'remove');
+					setClass(panel, 'show', 'remove');
+
+					if (setClasses) {
+						this.classList.toggle("active");
+						this.nextElementSibling.classList.toggle("show");
+					}
+				}
+			}
+
+			function setClass(els, className, fnName) {
+				for (var i = 0; i < els.length; i++) {
+					els[i].classList[fnName](className);
+				}
+			}
+
+		});
+
+		$(function () {
+			$('.nav a').on('click', function () {
+				if ($('.navbar-toggle').css('display') != 'none') {
+					$(".navbar-toggle").trigger("click");
+				}
+			});
+		});
+
+	</script>
+
+
+</body>
+
+</html>
