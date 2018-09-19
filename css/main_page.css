@@ -12,6 +12,9 @@
   justify-content: center;
   align-items: center;
 }
+#overlay p {
+  margin: 0;
+}
 
 #user-type-form {
   font-family: 'Lucida Sans',
@@ -25,7 +28,7 @@
   font-size: 12pt;
 
   height: 40vh;
-  width: 50vw;
+  width: 40vw;
   padding: 1em;
   background-color: white;
 
@@ -35,26 +38,24 @@
   align-items: space-around;
 }
 
-#radio-buttons-wrapper {
+#overlay .radio-buttons-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   color: black;
 }
-#radio-buttons-wrapper span {
+#overlay .radio-buttons-wrapper input {
+  margin: 0;
+}
+#overlay .radio-buttons-wrapper span {
   width: 5em;
+  margin: 0;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-#radio-buttons-wrapper p {
-  margin: 0;
-}
-#radio-buttons-wrapper input {
-  margin: 0;
 }
 
 .navbar-nav>li>a
