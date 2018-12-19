@@ -1,7 +1,7 @@
 // the Firebase Functions module
 import * as functions from 'firebase-functions';
 // my express app
-import { app } from './express/app.js';
+import { app } from './express-app/app.js';
 
 /*
 There should be very little code here.
