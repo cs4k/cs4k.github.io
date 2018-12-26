@@ -16,7 +16,7 @@ export function potentialUserIsValid( userData: UserData ): boolean {
   // type of user (e.g. Teacher, Volunteer)
   const { userType } = userData;
 
-  // reference to folder of users
+  // reference to folder of users.
   const usersFolderRef = db.ref('users');
 
 
