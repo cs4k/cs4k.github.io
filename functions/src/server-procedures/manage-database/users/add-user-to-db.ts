@@ -1,8 +1,4 @@
-/**
-Functions to deal with the creation of new users.
- */
-
-import { UserData } from '../../common-modules/database-entry-interfaces/module';
+import { UserData } from '../../../common-modules/database-entry-interfaces/module';
 
 /**
  * A procedure for adding new users to the database.
