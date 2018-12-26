@@ -11,7 +11,7 @@ import * as express from 'express';
 // TODO implement this in the front-end.
 import * as multer from 'multer';
 // The addUserToDB procedure
-import { addUserToDB } from './../../server-procedures/add-user-to-db';
+import { addUserToDB } from './../../server-procedures/manage-database/module';
 
 // Create an Express router to export.
 export const router: express.Router = express.Router();
