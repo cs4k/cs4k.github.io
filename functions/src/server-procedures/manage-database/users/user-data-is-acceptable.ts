@@ -1,15 +1,15 @@
 import * as admin from 'firebase-admin';
-import { UserData, UserType } from '../../../common-modules/database-entry-interfaces/module';
+import { UserData, UserType } from '../../../common-modules/database-entries/module';
 
 // Global constant necessary for interacting with database.
 const db: admin.database.Database = admin.database();
 
 /**
- * A procedure for checking that a new user
- * would be valid if added to the database.
+ * A function for checking that a new user
+ * should be accepted by the database.
  * @param userData contains data representing the user.
  */
-export function potentialUserIsValid( userData: UserData ): boolean {
+export function userDataIsAcceptable( userData: UserData ): boolean {
 
   //TODO
   
@@ -19,7 +19,7 @@ export function potentialUserIsValid( userData: UserData ): boolean {
   // reference to folder of users.
   const usersFolderRef = db.ref('users');
 
-
+  
 
   /*
   Check the database to ensure that the

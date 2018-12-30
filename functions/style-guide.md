@@ -90,7 +90,11 @@ in order to further organize elements. This is up to the coder's discretion.
 
 All module elements should be re-exported by a single module.ts file.
 
-This simplifies the importing process from outside the module.
+This simplifies the importing process from outside the module because
+all of a module's exports are in one file. If one wants to read about a
+certain export, the module.ts file also specifies the sources of all exports.
+The module.ts file may also contain brief descriptions of module elements.
+
 This also gives us the liberty to re-organize the module from the inside
 without having to worry about breaking the module's interface.
 

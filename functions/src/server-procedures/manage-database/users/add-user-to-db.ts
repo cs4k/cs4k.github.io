@@ -1,4 +1,5 @@
-import { UserData } from '../../../common-modules/database-entry-interfaces/module';
+import { UserData } from '../../../common-modules/database-entries/module';
+import { userDataIsAcceptable } from './user-data-is-acceptable';
 
 /**
  * A procedure for adding new users to the database.
@@ -7,8 +8,16 @@ import { UserData } from '../../../common-modules/database-entry-interfaces/modu
  * @param userData contains data representing the user.
  * Returns the id of the newly-created user.
  */
-export function addUserToDB( userData: UserData ): string {
+export function addUserToDB( userData: UserData ): string | null {
 
   //TODO
+
+  // if userData wouldn't create a valid user
+  if (!userDataIsAcceptable( userData ))
+  {
+    return null;
+  }
+  // else userData is valid
+
   
 };
