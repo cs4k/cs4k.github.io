@@ -5,7 +5,11 @@
     "noImplicitReturns": true,
     "outDir": "lib",
     "sourceMap": true,
-    "target": "es6"
+    "target": "es6",
+    // added by us
+    // Prevents null and undefined from being
+    // assigned to any type.
+    "strictNullChecks": true
   },
   "compileOnSave": true,
   "include": [

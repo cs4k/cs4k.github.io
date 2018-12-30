@@ -1,5 +1,4 @@
 import * as validator from 'validator';
-import { user } from 'firebase-functions/lib/providers/auth';
 import {
   createValidatorWithReasons,
   Reason
