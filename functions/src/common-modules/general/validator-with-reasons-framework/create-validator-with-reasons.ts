@@ -44,8 +44,6 @@ export function createValidatorWithReasons<T>(
 : // returns the validator function
   ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
 {
-  //TODO
-
   // return a function using the map parameter.
   return ( x: T, returnReasonsIfFailure = false ) => {
 
