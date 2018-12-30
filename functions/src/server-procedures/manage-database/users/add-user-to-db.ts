@@ -11,7 +11,7 @@ import { userDataIsAcceptable } from './user-data-is-acceptable';
 export function addUserToDB( userData: UserData ): string | null {
 
   //TODO
-
+  
   // if userData wouldn't create a valid user
   if (!userDataIsAcceptable( userData ))
   {
