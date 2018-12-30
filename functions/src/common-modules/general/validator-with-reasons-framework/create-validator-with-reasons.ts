@@ -19,9 +19,11 @@ import { Reason } from './Reason';
  * Type T determines the type of the argument
  * that the validator should take.
  * 
- * @param test_TO_reasonIfFailed a map from
+ * @param test_TO_reasonIfFailed a map to
  * each test function (i.e. a function with on parameter of type T)
- * to the Reason explaining why it would return false.
+ * from the Reason explaining why it would return false.
+ * We want to be able to map Reason -> test,
+ * so it's better to make Reason the key type.
  * The test should take as parameters
  * the object to be tested.
  * 
@@ -33,12 +35,62 @@ import { Reason } from './Reason';
  */
 export function createValidatorWithReasons<T>(
   test_TO_reasonForFailure: Map<
-    ( x: T ) => boolean,
-    Reason
+    // value: the Reason for why the test function returns false
+    Reason,
+    // key: a test function
+    ( x: T ) => boolean
   >
 )
 : // returns the validator function
-  ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Array<Reason>
+  ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
 {
   //TODO
+
+  // return a function using the map parameter.
+  return ( x: T, returnReasonsIfFailure = false ) => {
+
+    // if a list of Reasons need to be returned,
+    if ( returnReasonsIfFailure )
+    {
+      // then all tests must be tried.
+
+      // create the list of reasons.
+      const reasons: Reason[] = [];
+
+      // for all reason-test pairs in the map parameter
+      for ( const [reason,test] of test_TO_reasonForFailure )
+      {
+        // if this test fails
+        if (!test( x ))
+        {
+          // then store the reason explaining its failure
+          reasons.push( reason );
+        }
+      }
+
+      // if we stored no reasons,
+      // then all tests passed,
+      // so return true.
+      return reasons.length === 0 ? true : reasons;
+    }
+    // else we don't need a list of Reasons,
+    else
+    {
+      // then just check whether any of the tests fail.
+
+      // for all reason-test pairs in the map parameter
+      for ( const [reason,test] of test_TO_reasonForFailure )
+      {
+        // if any test fails,
+        if (!test( x ))
+        {
+          // then return false immediately.
+          return false;
+        }
+      }
+
+      // only return true if no test fails.
+      return true;
+    }
+  };
 }
