@@ -1,3 +1,3 @@
-export { UserData, UserType } from './UserData';
-export { TeacherData } from './TeacherData';
-export { VolunteerData } from './VolunteerData';
+export * from './UserData';
+export * from './TeacherData';
+export * from './VolunteerData';

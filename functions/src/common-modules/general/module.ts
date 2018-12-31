@@ -1,18 +1,14 @@
-export {
-  // a strict version of JSON.stringify
-  to_json_or_null
-} from './data/json';
+/**
+ * The general module is different.
+ * It has several submodules that should be exported.
+ */
+
+// Some useful tools for working with data.
+export * from './data/module';
 
 // A framework for validator functions that return
 // the reasons for why an input was considered invalid.
-export {
-  // The class defining a Reason.
-  Reason,
-  // A factory function for special validator functions.
-  createValidatorWithReasons
-} from './validator-with-reasons-framework/module';
+export * from './validator-with-reasons-framework/module';
 
-// Extensions to the Array type
-export {
-  array_append
-} from './Array-extensions/module';
+// Some useful tools for working with arrays.
+export * from './my-array-extensions/module';
