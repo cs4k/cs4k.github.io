@@ -14,9 +14,9 @@ the Cloud Functions are basically a simplified version of
 a traditional Node.js server.
 
 The code is written in the **TypeScript** programming language.
-We chose TypeScript over JavaScript for two reasons:\
+We chose TypeScript over JavaScript for two reasons:
 1) Firebase's version of TypeScript is much more advanced than its version of JavaScript.
-This allows for more powerful capabilities.\
+This allows for more powerful capabilities.
 2) TypeScript is a superset of JavaScript which allows for static typing.
 This makes allows our code editor to annotate our code more with more detail.
 
