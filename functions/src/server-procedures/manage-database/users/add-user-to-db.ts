@@ -1,5 +1,5 @@
 import { UserData } from '../../../common-modules/database-entries/module';
-import { userDataIsAcceptable } from './user-data-is-acceptable';
+import { userDataCanBeAddedToDB } from './user-data-is-acceptable';
 
 /**
  * A procedure for adding new users to the database.
@@ -11,9 +11,9 @@ import { userDataIsAcceptable } from './user-data-is-acceptable';
 export function addUserToDB( userData: UserData ): string | null {
 
   //TODO
-  
+
   // if userData wouldn't create a valid user
-  if (!userDataIsAcceptable( userData ))
+  if (!userDataCanBeAddedToDB( userData ))
   {
     return null;
   }
