@@ -8,12 +8,12 @@ import { userDataCanBeAddedToDB } from './user-data-can-be-added-to-db';
  * @param userData contains data representing the user.
  * Returns the id of the newly-created user.
  */
-export function addUserToDB( userData: UserData ): string | null {
+export async function addUserToDB( userData: UserData ): Promise<string|null> {
   
   //TODO
 
   // if userData wouldn't create a valid user
-  if (!userDataCanBeAddedToDB( userData ))
+  if (! await userDataCanBeAddedToDB( userData, false ))
   {
     return null;
   }
