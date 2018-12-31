@@ -13,6 +13,11 @@ export function userDataIsAcceptable( userData: UserData ): boolean {
 
   //TODO
   
+  // first, make sure that userData is coherent
+  // i.e. would it be valid if we didn't check the database?
+
+  
+
   // type of user (e.g. Teacher, Volunteer)
   const { userType } = userData;
 

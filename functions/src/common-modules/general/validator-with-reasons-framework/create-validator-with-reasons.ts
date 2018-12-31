@@ -1,17 +1,17 @@
 import { Reason } from './Reason';
 
 /**
- * A function factory to create a special kind of validator function.
+ * This is a function factory to create a special kind of validator function.
  * 
  * A validator function normally returns a boolean
  * to specify whether its argument is considered valid.
  * Often, the validator function will require that the
- * argument pass of a series of tests.
+ * argument pass a series of tests (subfunctions which also return booleans).
  * If any of these tests fail, the validator fails.
  * 
  * We want a special validator function that will 
  * –instead of simply returning false–
- * tell us which test failed and give Reasons as to why it failed.
+ * tell us which test failed and give reasons for why it failed.
  * 
  * The tests and corresponding Reasons are
  * provided through the map parameter.

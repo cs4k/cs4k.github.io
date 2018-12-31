@@ -6,8 +6,13 @@ export {
 // A framework for validator functions that return
 // the reasons for why an input was considered invalid.
 export {
-  // A factory function for special validator functions.
-  createValidatorWithReasons,
   // The class defining a Reason.
-  Reason
+  Reason,
+  // A factory function for special validator functions.
+  createValidatorWithReasons
 } from './validator-with-reasons-framework/module';
+
+// Extensions to the Array type
+export {
+  array_append
+} from './Array-extensions/module';
