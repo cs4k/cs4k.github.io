@@ -1,5 +1,5 @@
 import { Reason } from './Reason';
-import * as myArrayExts from './../Array-extensions/module';
+import * as myArrayExts from './../my-array-extensions/module';
 
 /**
  * See createValidatorWithReasons for details required to understand this.

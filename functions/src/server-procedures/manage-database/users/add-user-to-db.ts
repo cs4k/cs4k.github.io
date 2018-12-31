@@ -1,5 +1,5 @@
 import { UserData } from '../../../common-modules/database-entries/module';
-import { userDataCanBeAddedToDB } from './user-data-is-acceptable';
+import { userDataCanBeAddedToDB } from './user-data-can-be-added-to-db';
 
 /**
  * A procedure for adding new users to the database.
@@ -9,7 +9,7 @@ import { userDataCanBeAddedToDB } from './user-data-is-acceptable';
  * Returns the id of the newly-created user.
  */
 export function addUserToDB( userData: UserData ): string | null {
-
+  
   //TODO
 
   // if userData wouldn't create a valid user
