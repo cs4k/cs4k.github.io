@@ -1,4 +1,5 @@
 import { Reason } from './Reason';
+import { currentId } from 'async_hooks';
 
 /**
  * This is a function factory to create a special kind of validator function.
@@ -115,83 +116,134 @@ export async function createValidatorWithReasonsAsync<T>(
     ( x: T ) => boolean | Promise<boolean>
   >
 )
-: // returns the validator function
-  ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean | Reason[]>
+: // returns a promise containing the validator function
+  Promise<
+    // The asynchronous validator function type.
+    ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean|Reason[]>
+  >
 {
-
-}
-
-/**
- * 
- * @param x 
- * @param returnReasonsIfFailure 
- * @param result 
- * @param should_continue 
- */
-function* validatorWithReasons_helper<T>(
-  x: T,
-  returnReasonsIfFailure: boolean,
-  // return by reference using a tuple.
-  // One element of type boolean or Reason[]
-  result: [ boolean | Reason[] ],
-  // return by reference using a tuple.
-  // Should the generator continue to be called?
-  should_continue: [ boolean ]
-)
-{
-  // if a list of Reasons need to be returned,
-  if ( returnReasonsIfFailure )
+  if ( test_TO_reasonForFailure.size === 0 )
   {
-    // then all tests must be tried,
-    // and all of their reasons (if any) must be collected.
+    throw Error(
+      `${createValidatorWithReasonsAsync.name}: an empty map was passed.
+      A validator is meaningless if there are no tests.`
+    );
+  }
 
-    // The result will be an array of reasons
-    const reasons = result[0] = [];
-    // The generator should be called for all tests,
-    // so do NOT change this value.
-    should_continue[0] = true;
-
-    while ( true )
-    {
-      // Error will be thrown if this type isn't passed.
-      const reason_testResult: [ Reason, boolean ] = yield;
-
-
-    }
-
+  return async ( x: T, returnReasonsIfFailure = false ) => {
+    const gen = validatorWithReasons_generatorHelper(
+      x,
+      returnReasonsIfFailure
+    );
+    
+    // The current return value of gen.next(), initially set to undefined.
+    // Must be declared outside of for-loop.
+    let current: undefined | IteratorResult<boolean|Reason[]> = undefined;
+    
     // for all reason-test pairs in the map parameter
     for ( const [reason,test] of test_TO_reasonForFailure )
     {
-      // if this test fails
-      if (!test( x ))
+      current = gen.next([ reason, await test(x) ]);
+
+      // if the generator is done,
+      if ( current.done )
       {
-        // then store the reason explaining its failure
-        reasons.push( reason );
+        // then return the current value.
+        return current.value;
       }
     }
 
-    // if we stored no reasons,
-    // then all tests passed,
-    // so return true.
-    return reasons.length === 0 ? true : reasons;
+    if ( current )
+    {
+      return current.value;
+    }
+    else
+    {
+      throw Error(
+        `${createValidatorWithReasonsAsync.name}:
+        this point shouldn't be reached`
+      );
+    }
+  };
+}
+
+/**
+ * The synchronous and asynchronous versions of the createValidatorWithReasons*
+ * function factories are mostly the same.
+ * They only differ in how the test functions are evaluated.
+ * 
+ * Hence, this is a helper which implements the similar part of
+ * their algorithm.
+ * 
+ * next().done simultaneously tells client whether the generator needs to
+ * be called again and whether the client should return next().value.
+ * 
+ * IMPORTANT: This generator expects a tuple [ Reason, boolean ] to be passed
+ * to its next() method containing the result of one test function and
+ * the Reason behind its possible failure.
+ * 
+ * This generator function shouldn't be exported. It does not stand on its own,
+ * and it only serves to prevent code rewriting in the other two functions.
+ * 
+ * @param x The item to be validated.
+ * @param returnReasonsIfFailure Which should be returned in case of failure:
+ * false of an array of reasons?
+ */
+function* validatorWithReasons_generatorHelper<T>(
+  x: T,
+  returnReasonsIfFailure: boolean
+) : IterableIterator<boolean|Reason[]>
+{
+  // The validator returns true until any of the tests fail.
+  // It should initially be set to true.
+  let result: boolean | Reason[] = true;
+
+  // if a list of Reasons needs to be returned,
+  if ( returnReasonsIfFailure )
+  {
+    // then all tests must be processed,
+    // and all of their reasons (if any) must be collected.
+
+    // infinite loop
+    while ( true )
+    {
+      // Error should be thrown if this tuple isn't passed.
+      const reason_testResult: [ Reason, boolean ] = yield result;
+
+      // if testResult == false
+      if (!reason_testResult[ 1 ])
+      {
+        // if the result is still a boolean
+        if ( typeof result === 'boolean' )
+        {
+          // then convert it to Reason[]
+          result = [];
+        }
+
+        // store the reason.
+        result.push( reason_testResult[0] );
+      }
+    }
   }
   // else we don't need a list of Reasons,
   else
   {
     // then just check whether any of the tests fail.
 
-    // for all reason-test pairs in the map parameter
-    for ( const [reason,test] of test_TO_reasonForFailure )
+    // continue until the validator fails.
+    while ( result )
     {
-      // if any test fails,
-      if (!test( x ))
+      // Error should be thrown if this tuple isn't passed.
+      const reason_testResult: [ Reason, boolean ] = yield result;
+
+      // if testResult == false,
+      if (!reason_testResult[ 1 ])
       {
-        // then return false immediately.
-        return false;
+        // then fail the validator.
+        result = false;
+
+        // ignore the reason.
       }
     }
-
-    // only return true if no test fails.
-    return true;
   }
 }
