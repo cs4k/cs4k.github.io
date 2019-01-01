@@ -98,7 +98,7 @@ export function createValidatorWithReasons<T>(
  * The test should take as parameters
  * the object to be tested.
  */
-export async function createValidatorWithReasonsAsync<T>(
+export function createValidatorWithReasonsAsync<T>(
   test_TO_reasonForFailure: Map<
     // value: the Reason for why the test function returns false
     Reason,
@@ -106,11 +106,8 @@ export async function createValidatorWithReasonsAsync<T>(
     ( x: T ) => boolean | Promise<boolean>
   >
 )
-: // returns a promise containing the validator function
-  Promise<
-    // The asynchronous validator function type.
-    ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean|Reason[]>
-  >
+: // The asynchronous validator function type.
+  ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean|Reason[]>
 {
   // Ensure that map is not empty so that
   // the for-loop below executes once/more.
