@@ -1,5 +1,4 @@
 import { Reason } from './Reason';
-import { currentId } from 'async_hooks';
 
 /**
  * This is a function factory to create a special kind of validator function.
@@ -45,51 +44,53 @@ export function createValidatorWithReasons<T>(
 : // returns the validator function
   ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
 {
-  // return a function using the map parameter.
+  if ( test_TO_reasonForFailure.size === 0 )
+  {
+    throw Error(
+      `${createValidatorWithReasonsAsync.name}: an empty map was passed.
+      A validator is meaningless if there are no tests.`
+    );
+  }
+
   return ( x: T, returnReasonsIfFailure = false ) => {
 
-    // if a list of Reasons need to be returned,
-    if ( returnReasonsIfFailure )
+    // a generator to be used by shared by the synchronous and asynchronous
+    // versions of this function
+    const gen = validatorWithReasons_generatorHelper(
+      x,
+      returnReasonsIfFailure
+    );
+    
+    // The current return value of gen.next(), initially set to undefined.
+    // Must be declared outside of for-loop.
+    let current: undefined | IteratorResult<boolean|Reason[]> = undefined;
+    
+    // for all reason-test pairs in the map parameter
+    for ( const [reason,test] of test_TO_reasonForFailure )
     {
-      // then all tests must be tried.
+      current = gen.next([ reason, test(x) ]);
 
-      // create the list of reasons.
-      const reasons: Reason[] = [];
-
-      // for all reason-test pairs in the map parameter
-      for ( const [reason,test] of test_TO_reasonForFailure )
+      // if the generator is done,
+      if ( current.done )
       {
-        // if this test fails
-        if (!test( x ))
-        {
-          // then store the reason explaining its failure
-          reasons.push( reason );
-        }
+        // then return the current value.
+        return current.value;
       }
-
-      // if we stored no reasons,
-      // then all tests passed,
-      // so return true.
-      return reasons.length === 0 ? true : reasons;
     }
-    // else we don't need a list of Reasons,
+    
+    // if the generator didn't have a reason to stop,
+    if ( current )
+    {
+      // then return its value.
+      return current.value;
+    }
+    // else the map was empty despite us checking that it wasn't.
     else
     {
-      // then just check whether any of the tests fail.
-
-      // for all reason-test pairs in the map parameter
-      for ( const [reason,test] of test_TO_reasonForFailure )
-      {
-        // if any test fails,
-        if (!test( x ))
-        {
-          // then return false immediately.
-          return false;
-        }
-      }
-
-      // only return true if no test fails.
-      return true;
+      throw Error(
+        `${createValidatorWithReasonsAsync.name}:
+        logic error: this point shouldn't be reached`
+      );
     }
   };
 }
@@ -131,6 +132,9 @@ export async function createValidatorWithReasonsAsync<T>(
   }
 
   return async ( x: T, returnReasonsIfFailure = false ) => {
+
+    // a generator to be used by shared by the synchronous and asynchronous
+    // versions of this function
     const gen = validatorWithReasons_generatorHelper(
       x,
       returnReasonsIfFailure
@@ -153,15 +157,18 @@ export async function createValidatorWithReasonsAsync<T>(
       }
     }
 
+    // if the generator didn't have a reason to stop,
     if ( current )
     {
+      // then return its value.
       return current.value;
     }
+    // else the map was empty despite us checking that it wasn't.
     else
     {
       throw Error(
         `${createValidatorWithReasonsAsync.name}:
-        this point shouldn't be reached`
+        logic error: this point shouldn't be reached`
       );
     }
   };
