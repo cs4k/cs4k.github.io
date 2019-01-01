@@ -44,13 +44,12 @@ export function createValidatorWithReasons<T>(
 : // returns the validator function
   ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
 {
-  if ( test_TO_reasonForFailure.size === 0 )
-  {
-    throw Error(
-      `${createValidatorWithReasonsAsync.name}: an empty map was passed.
-      A validator is meaningless if there are no tests.`
-    );
-  }
+  // Ensure that map is not empty so that
+  // the for-loop below executes once/more.
+  ASSERT_nonemptyMapParameter(
+    test_TO_reasonForFailure,
+    createValidatorWithReasons.name
+  );
 
   return ( x: T, returnReasonsIfFailure = false ) => {
 
@@ -78,20 +77,10 @@ export function createValidatorWithReasons<T>(
       }
     }
     
-    // if the generator didn't have a reason to stop,
-    if ( current )
-    {
-      // then return its value.
-      return current.value;
-    }
-    // else the map was empty despite us checking that it wasn't.
-    else
-    {
-      throw Error(
-        `${createValidatorWithReasonsAsync.name}:
-        logic error: this point shouldn't be reached`
-      );
-    }
+    // current should not be undefined if the for-loop executed once/more.
+    // for-loop should execute once/more if the map is not empty.
+    // Assertion at beginning of function ensured that.
+    return ( current as IteratorResult<boolean|Reason[]> ).value;
   };
 }
 
@@ -123,14 +112,13 @@ export async function createValidatorWithReasonsAsync<T>(
     ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean|Reason[]>
   >
 {
-  if ( test_TO_reasonForFailure.size === 0 )
-  {
-    throw Error(
-      `${createValidatorWithReasonsAsync.name}: an empty map was passed.
-      A validator is meaningless if there are no tests.`
-    );
-  }
-
+  // Ensure that map is not empty so that
+  // the for-loop below executes once/more.
+  ASSERT_nonemptyMapParameter(
+    test_TO_reasonForFailure,
+    createValidatorWithReasonsAsync.name
+  );
+  
   return async ( x: T, returnReasonsIfFailure = false ) => {
 
     // a generator to be used by shared by the synchronous and asynchronous
@@ -157,20 +145,10 @@ export async function createValidatorWithReasonsAsync<T>(
       }
     }
 
-    // if the generator didn't have a reason to stop,
-    if ( current )
-    {
-      // then return its value.
-      return current.value;
-    }
-    // else the map was empty despite us checking that it wasn't.
-    else
-    {
-      throw Error(
-        `${createValidatorWithReasonsAsync.name}:
-        logic error: this point shouldn't be reached`
-      );
-    }
+    // current should not be undefined if the for-loop executed once/more.
+    // for-loop should execute once/more if the map is not empty.
+    // Assertion at beginning of function ensured that.
+    return ( current as IteratorResult<boolean|Reason[]> ).value;
   };
 }
 
@@ -201,8 +179,8 @@ function* validatorWithReasons_generatorHelper<T>(
   returnReasonsIfFailure: boolean
 ) : IterableIterator<boolean|Reason[]>
 {
-  // The validator returns true until any of the tests fail.
-  // It should initially be set to true.
+  // The validator returns true until any of the tests fail,
+  // so its result should initially be set to true.
   let result: boolean | Reason[] = true;
 
   // if a list of Reasons needs to be returned,
@@ -214,10 +192,12 @@ function* validatorWithReasons_generatorHelper<T>(
     // infinite loop
     while ( true )
     {
-      // Error should be thrown if this tuple isn't passed.
+      // yeild will return the argument passed to next().
+      // Error should be thrown if the expected argument isn't passed.
+      // We expect the Reason and the result of its associated test.
       const reason_testResult: [ Reason, boolean ] = yield result;
 
-      // if testResult == false
+      // if testResult === false
       if (!reason_testResult[ 1 ])
       {
         // if the result is still a boolean
@@ -230,6 +210,8 @@ function* validatorWithReasons_generatorHelper<T>(
         // store the reason.
         result.push( reason_testResult[0] );
       }
+      // else testResult === true,
+      // then do nothing. 
     }
   }
   // else we don't need a list of Reasons,
@@ -240,7 +222,9 @@ function* validatorWithReasons_generatorHelper<T>(
     // continue until the validator fails.
     while ( result )
     {
-      // Error should be thrown if this tuple isn't passed.
+      // yeild will return the argument passed to next().
+      // Error should be thrown if the expected argument isn't passed.
+      // We expect the Reason and the result of its associated test.
       const reason_testResult: [ Reason, boolean ] = yield result;
 
       // if testResult == false,
@@ -252,5 +236,18 @@ function* validatorWithReasons_generatorHelper<T>(
         // ignore the reason.
       }
     }
+  }
+}
+
+function ASSERT_nonemptyMapParameter( 
+  map: Map<any,any>,
+  function_name: string
+): void
+{
+  if ( map.size === 0 )
+  {
+    throw Error(
+      `${function_name}: an empty map was passed.`
+    );
   }
 }

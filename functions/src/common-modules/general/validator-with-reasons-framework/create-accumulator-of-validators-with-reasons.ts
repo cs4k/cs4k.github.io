@@ -77,3 +77,83 @@ export function createAccumulatorOfValidatorsWithReasons<T>(
     }
   };
 }
+
+/**
+ * TODO write description
+ * @param x 
+ * @param returnReasonsIfFailure 
+ */
+function* accumulatorOfValidatorsWithReasons_generatorHelper<T>(
+  x: T,
+  returnReasonsIfFailure: boolean
+) : IterableIterator< boolean | Reason[] >
+{
+  // The validator returns true until any of the tests fail,
+  // so its result should initially be set to true.
+  let result: boolean | Reason[] = true;
+
+  // if a list of Reasons needs to be returned,
+  if ( returnReasonsIfFailure )
+  {
+    // then all subvalidators must be processed,
+    // and all of their reasons (if any) must be collected.
+
+    // infinite loop
+    while ( true )
+    {
+      // yeild will return the argument passed to next().
+      // Error should be thrown if the expected argument isn't passed.
+      // We expect the result of one subvalidator.
+      // A single subvalidator will return either
+      // true or an array of reasons explaining why it failed.
+      const subvalidatorResult: boolean | Reason[] = yield result;
+
+      // if subvalidatorResult is a Reason[]
+      if ( typeof subvalidatorResult !== 'boolean' )
+      {
+        // then collect reasons.
+
+        // if the result is still a boolean
+        if ( typeof result === 'boolean' )
+        {
+          // then convert it to Reason[]
+          result = [];
+        }
+
+        // collect reasons.
+        myArrayExts.append( result, subvalidatorResult );
+      }
+      else if ( subvalidatorResult === false )
+      {
+        throw Error(`
+        ${accumulatorOfValidatorsWithReasons_generatorHelper.name}:
+        This point should not be reached. Either returnReasonsIfFailure
+        parameter should have been false, or false was incorrectly passed
+        to next().
+        `);
+      }
+      // else subvalidatorResult === true,
+      // then do nothing.
+    }
+  }
+  // else we don't need a list of reasons
+  else
+  {
+    // then just check whether any of the tests fail.
+
+    while ( result )
+    {
+      // yeild will return the argument passed to next().
+      // Error should be thrown if the expected argument isn't passed.
+      // We expect the result of one subvalidator.
+      const subvalidatorResult: boolean = yield result;
+
+      // if the subvalidator failed,
+      if ( !subvalidatorResult )
+      {
+        // then fail the accumulator
+        result = false;
+      }
+    }
+  }
+}
