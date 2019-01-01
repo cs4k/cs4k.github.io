@@ -1,6 +1,8 @@
 import { Reason } from './Reason';
 import * as myArrayExts from './../my-array-extensions/module';
 
+// TODO write asynchronous version of createAccumulatorOfValidatorsWithReasons
+
 /**
  * See createValidatorWithReasons for details required to understand this.
  * 

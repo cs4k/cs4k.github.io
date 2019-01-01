@@ -2,8 +2,8 @@
 
 ## Description
 
-This folder is a collection of "server procedures" which carry out
-routine server tasks (e.g. adding users to the database,
+This folder is a collection of *modules* containing "server procedures"
+which carry out routine server tasks (e.g. adding users to the database,
 sending http requests, etc.).
 
 We write the server procedures here (as opposed to directly in the

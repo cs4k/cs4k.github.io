@@ -12,6 +12,10 @@ import {
   usersRef
 } from './../../../common-modules/database-entries/module';
 
+// TODO rewrite these validators after creating the asynchronous version of
+// create createValidatorWithReasons and
+// createAccumulatorOfValidatorsWithReasons. 
+
 /**
  * A function for checking that a user described by
  * a UserData object wouldn't collide with another
