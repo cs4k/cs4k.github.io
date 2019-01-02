@@ -1,0 +1,12 @@
+<form>
+  <input type="text" name="email" #email>
+  <input type="text" name="password" #password>
+  <input
+    type="submit"
+    value="Submit"
+    (click)="signIn( email.value, password.value )"
+  >
+</form>
+<div *ngFor="let email of emails">
+  {{ email }}
+</div>
