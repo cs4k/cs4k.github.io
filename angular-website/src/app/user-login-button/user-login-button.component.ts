@@ -13,9 +13,9 @@ export class UserLoginButtonComponent {
 
   constructor(
     private authService: AuthService
-  ) { }
+  ) {}
   
-  async signIn( email: string, password: string ) {
+  async signInWithEmailAndPassword( email: string, password: string ) {
     this.authService.signInWithEmailAndPassword(
       email, password
     ).then(() => {
