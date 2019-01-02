@@ -14,14 +14,17 @@ export class UserLoginButtonComponent {
   constructor(
     private authService: AuthService
   ) {}
-  
+
   async signInWithEmailAndPassword( email: string, password: string ) {
-    this.authService.signInWithEmailAndPassword(
+
+    const succeeded: boolean = await this.authService.signInWithEmailAndPassword(
       email, password
-    ).then(() => {
+    );
+
+    if ( succeeded ) {
       this.emails.push( email );
-    }).catch(() => {
+    } else {
       this.emails.push('ERROR');
-    });
+    }
   }
 }

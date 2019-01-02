@@ -16,6 +16,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    // added by us
+    // Prevents null and undefined from being
+    // assigned to any type.
+    "strictNullChecks": true
   }
 }
