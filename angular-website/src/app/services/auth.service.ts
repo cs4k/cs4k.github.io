@@ -17,10 +17,12 @@ export class AuthService {
       ( user: firebase.User | null ) => {
 
         console.log( user );
+        console.log(`user is logged in: ${ this.isLoggedIn() }`);
       },
       ( error: firebase.auth.Error ) => {
 
         console.log( error );
+        console.log(`user is logged in: ${ this.isLoggedIn() }`);
       }
     );
   }
@@ -58,7 +60,7 @@ export class AuthService {
       .then(( user_cred: firebase.auth.UserCredential ) => {
 
         // debugging
-        prompt( JSON.stringify(user_cred) );
+        console.log( JSON.stringify(user_cred) );
 
         resolve( true );
       })
