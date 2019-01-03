@@ -1,3 +1,3 @@
-export { Reason } from './Reason';
-export { createValidatorWithReasons } from './create-validator-with-reasons';
-export { createAccumulatorOfValidatorsWithReasons } from './create-accumulator-of-validators-with-reasons';
+export * from './Reason';
+export * from './create-validator-with-reasons';
+export * from './create-accumulator-of-validators-with-reasons';

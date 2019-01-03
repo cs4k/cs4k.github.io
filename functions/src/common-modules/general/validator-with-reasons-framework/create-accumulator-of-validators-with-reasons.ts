@@ -1,8 +1,6 @@
 import { Reason } from './Reason';
 import * as myArrayExts from './../my-array-extensions/module';
 
-// TODO write asynchronous version of createAccumulatorOfValidatorsWithReasons
-
 /**
  * See createValidatorWithReasons for details required to understand this.
  * 
@@ -34,7 +32,8 @@ export function createAccumulatorOfValidatorsWithReasons<T>(
     ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
   )[]
 )
-: ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
+: // The validator function type.
+  ( x: T, returnReasonsIfFailure?: boolean ) => boolean | Reason[]
 {
   // Ensure that array is not empty so that
   // the for-loop below executes once/more.
@@ -58,6 +57,7 @@ export function createAccumulatorOfValidatorsWithReasons<T>(
 
     for ( const subvalidator of subvalidators )
     {
+      // pass the result of the current subvalidator to the generator.
       current = gen.next(subvalidator( x ));
 
       // if the generator is done,
@@ -75,6 +75,14 @@ export function createAccumulatorOfValidatorsWithReasons<T>(
   };
 }
 
+/**
+ * The asynchronous version of createAccumulatorOfValidatorsWithReasons.
+ * See createAccumulatorOfValidatorsWithReasons for more details.
+ * 
+ * Necessary in case that one of the subvalidators is asynchronous.
+ * 
+ * @param subvalidators 
+ */
 export function createAccumulatorOfValidatorsWithReasonsAsync<T>(
   // an array of other validator functions.
   subvalidators: (
@@ -83,10 +91,47 @@ export function createAccumulatorOfValidatorsWithReasonsAsync<T>(
     => boolean | Reason[] | Promise<boolean|Reason[]>
   )[]
 )
-: // the validator function type
+: // the validator function type.
   ( x: T, returnReasonsIfFailure?: boolean ) => Promise<boolean|Reason[]>
 {
-  // TODO
+  // Ensure that array is not empty so that
+  // the for-loop below executes once/more.
+  ASSERT_nonemptyArrayParameter(
+    subvalidators,
+    createAccumulatorOfValidatorsWithReasonsAsync.name
+  );
+
+  return async ( x: T, returnReasonsIfFailure = false ) => {
+    
+    // a generator to be used by shared by the synchronous and asynchronous
+    // versions of this function
+    const gen = accumulatorOfValidatorsWithReasons_generatorHelper(
+      x,
+      returnReasonsIfFailure
+    );
+    
+    // The current return value of gen.next(), initially set to undefined.
+    // Must be declared outside of for-loop.
+    let current: undefined | IteratorResult<boolean|Reason[]> = undefined;
+
+    for ( const subvalidator of subvalidators )
+    {
+      // pass the result of the current subvalidator to the generator.
+      current = gen.next(await subvalidator( x ));
+
+      // if the generator is done,
+      if ( current.done )
+      {
+        // then return the current value
+        return current.value;
+      }
+    }
+
+    // current should not be undefined if the for-loop executed once/more.
+    // for-loop should execute once/more if the array is not empty.
+    // Assertion at beginning of function ensured that.
+    return ( current as IteratorResult<boolean|Reason[]> ).value;
+  };
 }
 
 

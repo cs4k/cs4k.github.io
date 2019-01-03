@@ -88,15 +88,9 @@ export function createValidatorWithReasons<T>(
  * The asynchronous version of createValidatorWithReasons.
  * See createValidatorWithReasons for details.
  * 
- * Necessary in case one of the test functions is asynchronous.
+ * Necessary in case that one of the test functions is asynchronous.
  * 
- * @param test_TO_reasonForFailure a map to
- * each test function (i.e. a function with on parameter of type T)
- * from the Reason explaining why it would return false.
- * We want to be able to map Reason -> test,
- * so it's better to make Reason the key type.
- * The test should take as parameters
- * the object to be tested.
+ * @param test_TO_reasonForFailure
  */
 export function createValidatorWithReasonsAsync<T>(
   test_TO_reasonForFailure: Map<
