@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 // required for AngularFire2
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { UserLoginButtonComponent } from './user-login-button/user-login-button.component';
 // optional AngularFire2 modules for specific needs
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -16,16 +15,22 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
-// Service to handle user authentication
+// ng-bootstrap widgets
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AuthService } from './services/auth.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UserLoginButtonComponent
+    NavBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     AngularFireModule.initializeApp(
       environment.firebase,
       // app name

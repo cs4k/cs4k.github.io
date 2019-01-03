@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserLoginButtonComponent } from './user-login-button/user-login-button.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const routes: Routes = [
-  { path: '**', component: UserLoginButtonComponent }
+  // The catch-all path '**'
+  { path: '**', component: NavBarComponent }
 ];
 
 @NgModule({
