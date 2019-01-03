@@ -16,13 +16,13 @@ export class AuthService {
     this.firebaseAuth.auth.onAuthStateChanged(
       ( user: firebase.User | null ) => {
 
-        console.log( user );
-        console.log(`user is logged in: ${ this.isLoggedIn() }`);
+        if ( user !== null ) {
+          console.log(`user logged in: ${ user.email }`);
+        }
       },
       ( error: firebase.auth.Error ) => {
 
         console.log( error );
-        console.log(`user is logged in: ${ this.isLoggedIn() }`);
       }
     );
   }
@@ -59,15 +59,9 @@ export class AuthService {
       )
       .then(( user_cred: firebase.auth.UserCredential ) => {
 
-        // debugging
-        console.log( JSON.stringify(user_cred) );
-
         resolve( true );
       })
       .catch(( error ) => {
-
-        // debugging
-        console.log( error );
 
         resolve( false );
       });

@@ -1,12 +1,15 @@
+<!-- TODO
+  This component should be a button, not a form.
+  This form was made just for testing, so you should re-do this component
+  when possible.
+-->
+
+<!-- return false to prevent redirecting -->
 <form onsubmit="return false;">
   <input type="text" name="email" #email>
   <input type="text" name="password" #password>
-  <input
-    type="submit"
-    value="Submit"
+  <!-- submission activates login -->
+  <input type="submit" value="Submit"
     (click)="signInWithEmailAndPassword( email.value, password.value );"
   >
 </form>
-<div *ngFor="let email of emails">
-  {{ email }}
-</div>

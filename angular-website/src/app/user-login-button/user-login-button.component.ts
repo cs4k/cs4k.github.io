@@ -12,19 +12,16 @@ export class UserLoginButtonComponent {
   private emails: string[] = [];
 
   constructor(
+    // used to sign users in
     private authService: AuthService
   ) {}
 
-  async signInWithEmailAndPassword( email: string, password: string ) {
+  async signInWithEmailAndPassword(
+    email: string, password: string
+  ): Promise<boolean> {
 
-    const succeeded: boolean = await this.authService.signInWithEmailAndPassword(
+    return await this.authService.signInWithEmailAndPassword(
       email, password
     );
-
-    if ( succeeded ) {
-      this.emails.push( email );
-    } else {
-      this.emails.push('ERROR');
-    }
   }
 }
