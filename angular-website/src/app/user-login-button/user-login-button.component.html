@@ -1,10 +1,10 @@
-<form>
+<form onsubmit="return false;">
   <input type="text" name="email" #email>
   <input type="text" name="password" #password>
   <input
     type="submit"
     value="Submit"
-    (click)="signInWithEmailAndPassword( email.value, password.value )"
+    (click)="signInWithEmailAndPassword( email.value, password.value );"
   >
 </form>
 <div *ngFor="let email of emails">

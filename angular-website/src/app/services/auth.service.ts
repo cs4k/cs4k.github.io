@@ -9,39 +9,33 @@ import { first } from 'rxjs/operators';
 })
 export class AuthService {
 
-  constructor( private firebase_auth: AngularFireAuth ) {
+  constructor( private firebaseAuth: AngularFireAuth ) {
 
-    console.log('console.log is working!');
+    console.log(`user is logged in: ${ this.isLoggedIn() }`);
 
-    this.isLoggedIn().then(( isLoggedIn: boolean ) => {
+    this.firebaseAuth.auth.onAuthStateChanged(
+      ( user: firebase.User | null ) => {
 
-      console.log(`user is logged in: ${ isLoggedIn }`);
-    });
+        console.log( user );
+      },
+      ( error: firebase.auth.Error ) => {
+
+        console.log( error );
+      }
+    );
   }
 
   /**
    * @returns a promise with the current user (firebase.User interface)
    *  or -if nobody is logged in- null.
    */
-  async getCurrentUser(): Promise<firebase.User|null>  {
-
-    for ( let i = 1; i <= 3; i++ )
-    {
-      console.log(`
-        user is equivalent to authState:
-        ${(await this.firebase_auth.user.pipe( first() ).toPromise())
-        === (await this.firebase_auth.authState.pipe( first() ).toPromise())}
-      `);
-    }
-
-    console.log( await this.firebase_auth.user.pipe( first() ).toPromise() );
-
-    return this.firebase_auth.user.pipe( first() ).toPromise();
+  getCurrentUser(): firebase.User | null {
+    return this.firebaseAuth.auth.currentUser;
   }
 
-  async isLoggedIn(): Promise<boolean> {
-    // user is logged in if currentUser != null
-    return null !== await this.getCurrentUser();
+  isLoggedIn(): boolean {
+    // user is logged in if currentUser !== null
+    return null !== this.getCurrentUser();
   }
 
   /**
@@ -49,24 +43,28 @@ export class AuthService {
    * (i.e. if function returns a Promise holding true),
    * then the page refreshes, so there's no point in
    * hoping for the promise to resolve to true.
-   * @returns promise containing boolean indicating
-   * success or failure for the functiion.
+   * @returns success/failure of sign-in
    */
-  async signInWithEmailAndPassword( email: string, password: string ) {
+  async signInWithEmailAndPassword(
+    email: string, password: string
+  )
+  : Promise<boolean> {
 
     return new Promise<boolean>(( resolve ) => {
 
-      this.firebase_auth.auth.signInWithEmailAndPassword(
+      this.firebaseAuth.auth.signInWithEmailAndPassword(
         email, password
       )
-      .then(() => {
-        // There's no point in returning the promise.
-        // The website refreshes immediately after a successful sign-in,
-        // so .then() never gets executed
+      .then(( user_cred: firebase.auth.UserCredential ) => {
+
+        // debugging
+        prompt( JSON.stringify(user_cred) );
+
         resolve( true );
       })
       .catch(( error ) => {
-        
+
+        // debugging
         console.log( error );
 
         resolve( false );
