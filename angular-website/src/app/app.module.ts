@@ -15,9 +15,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
-// ng-bootstrap widgets
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AuthService } from './services/auth.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
@@ -30,7 +27,6 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     AngularFireModule.initializeApp(
       environment.firebase,
       // app name

@@ -4,9 +4,7 @@ import {
 } from '../../../common-modules/database-entries/module';
 import {
   Reason,
-  createValidatorWithReasons,
   createValidatorWithReasonsAsync,
-  createAccumulatorOfValidatorsWithReasons,
   createAccumulatorOfValidatorsWithReasonsAsync
 } from './../../../common-modules/general/module';
 import {
@@ -58,6 +56,9 @@ createValidatorWithReasonsAsync<UserData>(
  */
 export const userDataCanBeAddedToDB =
 createAccumulatorOfValidatorsWithReasonsAsync([
+  // Check that userData is coherent by itself.
+  // i.e. would it be valid if we didn't check the database?
   userDataIsCoherent,
+  // Check that another user doesn't have the same entry already.
   userDataIsNotAlreadyInDB
 ]);
