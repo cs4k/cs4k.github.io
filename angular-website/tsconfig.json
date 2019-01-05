@@ -20,6 +20,9 @@
     // added by us
     // Prevents null and undefined from being
     // assigned to any type.
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    // added by us
+    // allows for for-or loops with Maps
+    "downlevelIteration": true
   }
 }

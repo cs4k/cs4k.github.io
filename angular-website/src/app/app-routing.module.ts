@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  // The catch-all path '**'
-  { path: '**', component: NavBarComponent }
+  { path: '', component: HomePageComponent }
+  // TODO give 404 error to the catch-all path '**'
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,23 +16,31 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
-// required for Angular Materiel
+// Angular Material Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
 // ng-bootstrap widgets
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    LoginComponent
+    LoginComponent,
+    SideNavComponent,
+    HeaderComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     AngularFireModule.initializeApp(
       environment.firebase,
@@ -45,9 +54,13 @@ import { LoginComponent } from './login/login.component';
     // AngularFireStorageModule,
     // AngularFireMessagingModule
 
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatSidenavModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
