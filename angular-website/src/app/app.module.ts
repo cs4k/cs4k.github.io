@@ -24,17 +24,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './login/login.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { HeaderComponent } from './header/header.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SideNavComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    BreakpointReactDirective
   ],
   imports: [
     BrowserModule,
