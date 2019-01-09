@@ -17,11 +17,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 // Angular Material Modules
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatSidenavModule } from '@angular/material/sidenav';
-// ng-bootstrap widgets
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { LayoutModule } from '@angular/cdk/layout';
+// import { MatSidenavModule } from '@angular/material/sidenav';
+
+// ng-bootstrap module and widgets
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
@@ -44,6 +45,7 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
     FormsModule,
     ReactiveFormsModule,
 
+    // Firebase modules
     AngularFireModule.initializeApp(
       environment.firebase,
       // app name
@@ -56,9 +58,13 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
     // AngularFireStorageModule,
     // AngularFireMessagingModule
 
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatSidenavModule
+    // Angular Material modules
+    // BrowserAnimationsModule,
+    // LayoutModule,
+    // MatSidenavModule
+
+    // ng-bootstrap modules
+    NgbModule
   ],
   providers: [
     AuthService
