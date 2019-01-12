@@ -1,0 +1,27 @@
+#navbar-brand {
+  height: auto;
+  width: auto;
+  vertical-align: middle;
+  max-width: 45px;
+}
+
+.nav-link {
+  color: white;
+}
+
+/*
+#login {
+  --my-orange: #f19149;
+}
+#login:hover {
+  background-color: var(--my-orange);
+}
+#login:not(:hover) {
+  color: #FFFFFF;
+}
+#login:focus, #login:active{
+  box-shadow:none !important;
+  outline:0px !important;
+  outline-color: var(--my-orange);
+}
+*/
