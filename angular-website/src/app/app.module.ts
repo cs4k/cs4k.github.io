@@ -26,7 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
@@ -34,7 +34,7 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
   declarations: [
     AppComponent,
     LoginComponent,
-    SideNavComponent,
+    NavComponent,
     HeaderComponent,
     HomePageComponent,
     BreakpointReactDirective
