@@ -5,8 +5,12 @@
   max-width: 45px;
 }
 
+#navbarSupportedContent {
+  align-self: flex-end;
+}
+
 .nav-link {
-  color: white;
+  color: white !important;
 }
 
 nav {
@@ -18,7 +22,8 @@ nav {
   background-color: #f19149;
   border: 0in;
   border-radius: 8px;
-  width: 0.7in;
+  width: 70px;
+  align-self: center;
 }
 
 /*
