@@ -1,4 +1,4 @@
-#navbar-brand {
+#navbar-logo {
   height: auto;
   width: auto;
   vertical-align: middle;
@@ -7,6 +7,18 @@
 
 .nav-link {
   color: white;
+}
+
+nav {
+  position: fixed;
+}
+
+#login {
+  color: white;
+  background-color: #f19149;
+  border: 0in;
+  border-radius: 8px;
+  width: 0.7in;
 }
 
 /*
