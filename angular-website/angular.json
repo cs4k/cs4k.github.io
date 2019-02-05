@@ -133,5 +133,10 @@
       }
     }
   },
-  "defaultProject": "angular-website"
+  "defaultProject": "angular-website",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
