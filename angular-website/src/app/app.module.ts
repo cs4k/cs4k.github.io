@@ -22,7 +22,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 
 // ng-bootstrap module and widgets
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
@@ -64,7 +64,7 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
     // MatSidenavModule
 
     // ng-bootstrap modules
-    NgbModule
+    // NgbModule
   ],
   providers: [
     AuthService

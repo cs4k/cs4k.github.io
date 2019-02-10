@@ -187,6 +187,7 @@ static void gc_mdtab(mdtab_shard* shard) {
           ((destroy_user_data_func)gpr_atm_no_barrier_load(
               &md->destroy_user_data))(user_data);
         }
+        gpr_mu_destroy(&md->mu_user_data);
         gpr_free(md);
         *prev_next = next;
         num_freed++;
@@ -237,7 +238,7 @@ static void rehash_mdtab(mdtab_shard* shard) {
 }
 
 grpc_mdelem grpc_mdelem_create(
-    grpc_slice key, grpc_slice value,
+    const grpc_slice& key, const grpc_slice& value,
     grpc_mdelem_data* compatible_external_backing_store) {
   if (!grpc_slice_is_interned(key) || !grpc_slice_is_interned(value)) {
     if (compatible_external_backing_store != nullptr) {
@@ -324,7 +325,8 @@ grpc_mdelem grpc_mdelem_create(
   return GRPC_MAKE_MDELEM(md, GRPC_MDELEM_STORAGE_INTERNED);
 }
 
-grpc_mdelem grpc_mdelem_from_slices(grpc_slice key, grpc_slice value) {
+grpc_mdelem grpc_mdelem_from_slices(const grpc_slice& key,
+                                    const grpc_slice& value) {
   grpc_mdelem out = grpc_mdelem_create(key, value, nullptr);
   grpc_slice_unref_internal(key);
   grpc_slice_unref_internal(value);

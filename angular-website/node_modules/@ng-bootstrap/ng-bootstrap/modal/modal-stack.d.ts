@@ -7,11 +7,12 @@ export declare class NgbModalStack {
     private _document;
     private _scrollBar;
     private _rendererFactory;
-    private _windowAttributes;
+    private _activeWindowCmptHasChanged;
+    private _ariaHiddenValues;
     private _backdropAttributes;
     private _modalRefs;
+    private _windowAttributes;
     private _windowCmpts;
-    private _activeWindowCmptHasChanged;
     constructor(_applicationRef: ApplicationRef, _injector: Injector, _document: any, _scrollBar: ScrollBar, _rendererFactory: RendererFactory2);
     open(moduleCFR: ComponentFactoryResolver, contentInjector: Injector, content: any, options: any): NgbModalRef;
     dismissAll(reason?: any): void;
@@ -24,6 +25,8 @@ export declare class NgbModalStack {
     private _createFromTemplateRef;
     private _createFromString;
     private _createFromComponent;
+    private _setAriaHidden;
+    private _revertAriaHidden;
     private _registerModalRef;
     private _registerWindowCmpt;
 }
