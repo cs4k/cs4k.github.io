@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* override */
+
+$primary: #55A8DE;
+
 /*
 The bootstrap UI framework
-For now, we're going to use Angular Materiel instead of bootstrap.
 */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "node_modules/bootstrap/scss/bootstrap";
 
 /* Angular Material */
 /* html, body { height: 100%; }
