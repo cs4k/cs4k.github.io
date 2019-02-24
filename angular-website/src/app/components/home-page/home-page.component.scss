@@ -22,6 +22,9 @@
   // ensure that foreground's z-index is greater than background's
   z-index: -1;
 
+  // This should be the height of the title image.
+  $title-height: 206px;
+
   #title-horizontal {
     width: 100vw;
     position: absolute;
@@ -31,9 +34,23 @@
     flex-direction: row;
 
     #title-wrapper {
-      .logo {
-        // let height fit horizontal container.
-        height: 100%;
+      display: flex;
+      flex-direction: row;
+
+      .logo-wrapper {
+        position: static;
+        height: $title-height;
+        width: $title-height;
+
+        img {
+          position: absolute;
+          max-height: $title-height;
+          max-width: $title-height;
+        }
+      }
+
+      #title {
+        height: $title-height;
       }
     }
   }
