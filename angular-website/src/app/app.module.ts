@@ -31,6 +31,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
 import { TeamComponent } from './components/team/team.component';
+import { FaqComponent } from './components/faq/faq.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { TeamComponent } from './components/team/team.component';
     HeaderComponent,
     HomePageComponent,
     BreakpointReactDirective,
-    TeamComponent
+    TeamComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
