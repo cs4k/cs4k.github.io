@@ -1,3 +1,7 @@
+.navbar {
+  width: 100%;
+}
+
 #navbar-logo {
   height: auto;
   width: auto;
@@ -7,6 +11,10 @@
 
 #navbarSupportedContent {
   align-self: flex-end;
+}
+
+.nav-item {
+  padding-right: 10px;
 }
 
 .nav-link {
@@ -23,7 +31,9 @@ nav {
   border: 0in;
   border-radius: 8px;
   width: 70px;
-  align-self: center;
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /*
