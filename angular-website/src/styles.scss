@@ -1,14 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* override */
+/* SECTION: override Bootstrap defaults */
+// Note: overrides have to occur before the import statement for Bootstrap.
 
-$primary: #55A8DE;
+// cs4k light blue
+$light: #55A8DE;
 
-/*
-The bootstrap UI framework
-*/
+// The Bootstrap UI framework.
+// Even though ng-bootstrap and ngx-bootstrap are more efficient in an
+// Angular app, we will use Bootstrap because its universality
+// will make it easier to find people to maintain the website.
 @import "node_modules/bootstrap/scss/bootstrap";
-
-/* Angular Material */
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
