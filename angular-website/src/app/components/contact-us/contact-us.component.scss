@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  color: white;
+ // width: 80%;
+  //background: url(/assets/images/Contact-penguin.png) center bottom no-repeat;
+}
+
+.contact-penguin {
+  width: 80%;
+  object-fit: contain;
+}
+
+.row {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.contact-img {
+  object-fit: contain;
+  height: 6em;
+  padding: 10px;
+}
