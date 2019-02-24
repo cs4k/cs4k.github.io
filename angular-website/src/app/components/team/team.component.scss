@@ -1,0 +1,84 @@
+#team {
+  width: 100vw;
+  padding-top: 1200px;
+}
+
+.container {
+  align-self: center;
+  align-items: center;
+}
+
+h1 {
+  align-self: center;
+  text-align: center;
+  color: white;
+}
+/* display this row with flex and use wrap (= respect columns' widths) */
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* vertical spacing between columns */
+
+[class*="col-"] {
+  margin-bottom: 30px;
+}
+
+.content {
+  height: 100%;
+  padding: 20px 20px 10px;
+  color: #fff;
+  text-align: center;
+}
+
+
+/* Demo backgrounds and styling*/
+/*
+.colour-1 {
+  background: #483C46;
+  color: #fff;
+}
+
+.colour-2 {
+  background: #3C6E71;
+}
+
+.colour-3 {
+  background: #70AE6E;
+}
+
+.colour-4 {
+  background: #82204A;
+}
+
+.colour-5 {
+  background: #558C8C;
+}
+
+.colour-6 {
+  background: #917C78;
+}
+*/
+
+.content h3 {
+  margin-top: 0px;
+  //font-weight: 300;
+}
+
+h1 {
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 150;
+}
