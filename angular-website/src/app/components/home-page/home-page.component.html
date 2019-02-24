@@ -1,5 +1,27 @@
+<!-- Header Toolbar -->
 <app-nav></app-nav>
 
-<div id="space-background-wrapper">
+<!--
+  We hope to have different scrolling speeds for the background
+  ad foreground, so let's separate them and give them absolute positioning.
+-->
+
+<div id="background">
   <img src="/assets/images/space-background.png" id="space-background">
+</div>
+
+<div id="foreground">
+  <!-- title-horizontal makes it easier to position title horizontally. -->
+  <div id="title-horizontal" class="temp-red-border">
+    <!-- title-wrapper necessary to implement a responsive effect -->
+    <span id="title-wrapper" class="temp-red-border">
+      <div class="logo temp-red-border">
+        <!-- the circular logo image is circumscribed by this square div. -->
+      </div>
+      <img id="title" class="temp-red-border"
+        src="/assets/images/cs4k-computer-science-for-kids.png"
+        alt="cs4k-computer-science-for-kids"
+      />
+    </span>
+  </div>
 </div>

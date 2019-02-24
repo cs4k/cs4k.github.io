@@ -1,9 +1,45 @@
-#space-background-wrapper {
+.temp-red-border {
+  // Temporary red border to facilitate placement.
+  border-color: red;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#background {
+  // Take up 100% of view-width
   width: 100vw;
-  position: fixed;
+  // Since this element has no "positioned" ancestors,
+  // it'll be positioned relative to the document body.
+  // However, since it's not static, it won't take up space in the normal flow.
+  position: absolute;
+  // Put behind everything.
   z-index: -1;
 }
 
+#foreground {
+  width: 100vw;
+  position: absolute;
+  // ensure that foreground's z-index is greater than background's
+  z-index: 0;
+
+  #title-horizontal {
+    width: 100vw;
+    position: absolute;
+    top: 12.5em;
+    // turn into a flexbox container
+    display: flex;
+    flex-direction: row;
+
+    #title-wrapper {
+      .logo {
+        // let height fit horizontal container.
+        height: 100%;
+      }
+    }
+  }
+}
+
 #space-background {
+  // Take up entire background width.
   width: 100%;
 }
