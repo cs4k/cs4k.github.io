@@ -1,9 +1,9 @@
-.temp-red-border {
-  // This temporary class helps us see element borders.
-  border-color: red;
-  border-style: solid;
-  border-width: 1px;
-}
+// .temp-red-border {
+//   // This temporary class helps us see element borders.
+//   border-color: red;
+//   border-style: solid;
+//   border-width: 1px;
+// }
 
 #background {
   // Take up 100% of view-width
@@ -59,4 +59,8 @@
 #space-background {
   // Take up entire background width.
   width: 100%;
+}
+
+app-team {
+  width: 100vw;
 }

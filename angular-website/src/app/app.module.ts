@@ -30,6 +30,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
+import { TeamComponent } from './components/team/team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
     NavComponent,
     HeaderComponent,
     HomePageComponent,
-    BreakpointReactDirective
+    BreakpointReactDirective,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
