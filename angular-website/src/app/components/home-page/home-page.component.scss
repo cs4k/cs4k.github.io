@@ -16,7 +16,8 @@
   z-index: -2;
 
   img {
-    object-fit: fill;
+    width: 100%;
+    object-fit: contain;
   }
 }
 
@@ -33,23 +34,24 @@
   #title-horizontal {
     width: 100%;
     position: absolute;
-    top: 12.5em;
+    top: 15vw;
     // turn into a flexbox container
     display: flex;
     flex-direction: row;
 
     #title-wrapper {
       height: $img-height;
-      width: 50%;
-      min-width: $img-width;
+      width: 55%;
 
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-
+      
       img {
-        height: 100%;
+        max-height: $img-height;
+        max-width: 100%;
+        object-fit: contain;
       }
     }
   }
