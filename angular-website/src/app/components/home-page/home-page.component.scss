@@ -39,15 +39,18 @@
     display: flex;
     flex-direction: row;
 
+    // padding-left: 5px;
+
     #title-wrapper {
       height: $img-height;
       width: 55%;
 
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
-      
+      flex: 1 1 auto;
+
       img {
         max-height: $img-height;
         max-width: 100%;
