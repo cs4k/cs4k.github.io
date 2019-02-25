@@ -23,3 +23,8 @@ html {
 // Angular app, we will use Bootstrap because its universality
 // will make it easier to find people to maintain the website.
 @import "node_modules/bootstrap/scss/bootstrap";
+
+// For some reason, I can't put this import here. It has to go in each component
+// that wants it.
+// https://github.com/PatrickJS/angular-starter/issues/924
+// @import "~bootstrap/scss/bootstrap-grid.scss";

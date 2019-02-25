@@ -1,3 +1,7 @@
+// Had trouble putting this in styles.css
+// https://github.com/PatrickJS/angular-starter/issues/924
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 // .temp-red-border {
 //   // This temporary class helps us see element borders.
 //   border-color: red;
@@ -38,8 +42,9 @@
     // turn into a flexbox container
     display: flex;
     flex-direction: row;
+    align-items: center;
 
-    // padding-left: 5px;
+    padding-left: 5px;
 
     #title-wrapper {
       height: $img-height;
@@ -47,15 +52,38 @@
 
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      flex: 1 1 auto;
-
-      img {
+      
+      #title-with-logo {
         max-height: $img-height;
         max-width: 100%;
         object-fit: contain;
       }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    #title-horizontal {
+      justify-content: center;
+
+      #title-wrapper {
+        justify-content: center;
+        height: auto;
+        width: 85%;
+
+        #title-with-logo {
+          height: auto;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    #title-horizontal {
+      top: 20vw;
     }
   }
 }
