@@ -93,14 +93,29 @@
   width: 100%;
 }
 
-app-team {
+#below-titles-and-about {
   width: 100vw;
-}
+  position: absolute;
+  top: 120vw;
 
-app-faq {
-  width: 100vw;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-app-contact-us {
-  width: 100vw;
+  $sepatation: 10vw;
+
+  app-team {
+    width: 100vw;
+    margin-bottom: $sepatation;
+  }
+
+  app-faq {
+    width: 100vw;
+    margin-bottom: $sepatation;
+  }
+
+  app-contact-us {
+    width: 100vw;
+    margin-bottom: 0;
+  }
 }
