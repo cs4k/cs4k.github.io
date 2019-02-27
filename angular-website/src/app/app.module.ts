@@ -33,6 +33,7 @@ import { BreakpointReactDirective } from './directives/breakpoint-react.directiv
 import { TeamComponent } from './components/team/team.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     BreakpointReactDirective,
     TeamComponent,
     FaqComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

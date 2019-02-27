@@ -76,6 +76,8 @@
           height: auto;
           width: 100%;
           object-fit: contain;
+
+          background-color: rgba(black,0.1);
         }
       }
     }
@@ -93,7 +95,7 @@
   width: 100%;
 }
 
-#below-titles-and-about {
+#sections {
   width: 100vw;
   position: absolute;
   top: 120vw;
@@ -104,18 +106,12 @@
 
   $sepatation: 10vw;
 
-  app-team {
+  .section {
     width: 100vw;
     margin-bottom: $sepatation;
-  }
-
-  app-faq {
-    width: 100vw;
-    margin-bottom: $sepatation;
-  }
-
-  app-contact-us {
-    width: 100vw;
-    margin-bottom: 0;
+  
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
