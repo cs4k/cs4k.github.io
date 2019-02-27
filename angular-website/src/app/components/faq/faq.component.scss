@@ -1,8 +1,8 @@
 .container {
   text-align: left;
   color: white;
-  margin-top: 2em;
-  margin-bottom: 2em; 
+  //margin-top: 2em;
+  //margin-bottom: 2em; 
 }
 
 .header {
@@ -10,11 +10,39 @@
   margin: 2em;
 }
 
+.question {
+  color: #FC903C;
+}
+
+.bg-custom-color {
+  background-color: rgba(141,141,158,0.3);
+}
+
 p {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0;
+  //margin-bottom: 1em;
 }
 
 h1 {
   font-weight: 300;
+  margin-bottom: 3%;
 }
+
+#col-right {
+  height: 95%;
+  padding: 5%;
+  //border-radius: 4%;
+}
+
+#col-bottom-left {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  //border-radius: 4%;
+  padding: 5%;
+}
+
+#col-top-left {
+  padding: 5%;
+  //border-radius: 4%;
+}
+
