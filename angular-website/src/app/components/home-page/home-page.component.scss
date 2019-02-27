@@ -76,8 +76,6 @@
           height: auto;
           width: 100%;
           object-fit: contain;
-
-          background-color: rgba(black,0.1);
         }
       }
     }
@@ -98,7 +96,12 @@
 #sections {
   width: 100vw;
   position: absolute;
-  top: 120vw;
+  top: 70vw;
+
+  // Necessary to avoid collision with the moon.
+  @media screen and (max-width: 680px) {
+    top: 100vw;
+  }
 
   display: flex;
   flex-direction: column;

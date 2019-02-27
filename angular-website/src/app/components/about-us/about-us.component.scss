@@ -5,7 +5,7 @@
   text-align: left;
 
   // aims to apply to all text
-  h1, h2, h3, p {
+  .text {
     color: white;
   }
 }
@@ -15,19 +15,33 @@
   flex-direction: row;
   align-items: center;
 
-  padding-left: 5px;
-
   #wrapper {
     height: auto;
-    width: 55%;
+    width: 40%;
+    $margin-left: 7.5vw;
+    margin-left: $margin-left;
+    // Screen width where wrapper takes up full screen
+    $tight-screen-width: 360px;
+    min-width: $tight-screen-width;
+    
+    $just-under-tight-screen-width: calc(#{$tight-screen-width} - 1px);
+    @media screen and (max-width: #{$just-under-tight-screen-width}) {
+      $side-margin: 5vw;
+      $new-width: calc(100vw - 2 * #{$side-margin});
+
+      margin-left: $side-margin;
+      margin-right: $side-margin;
+      min-width: $new-width;
+      width: $new-width;
+    }
 
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    
+
     #containing-column {
-      width: 480px;
+      width: 100%;
 
       display: flex;
       flex-direction: column;
@@ -36,8 +50,10 @@
 
       .text {
         width: 100%;
+        font-size: 18pt;
+        line-height: 1.9em;
 
-        $separation: 10px;
+        $separation: 5px;
         margin-bottom: $separation;
 
         &:last-child {
@@ -48,8 +64,11 @@
       .title {
         align-self: left;
 
-        font-size: 2.75vw;
+        font-size: 30pt;
+        letter-spacing: 0.1em;
         font-weight: normal;
+        // all caps
+        text-transform: uppercase;
       }
     }
   }
