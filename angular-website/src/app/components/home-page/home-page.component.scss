@@ -70,6 +70,7 @@
 
   @include media-breakpoint-down(md) {
     #title-horizontal {
+      top: 25vw;
       justify-content: center;
 
       #title-wrapper {
