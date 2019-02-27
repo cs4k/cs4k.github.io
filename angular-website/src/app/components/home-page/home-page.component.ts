@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnDestroy } from '@angular/core';
+import { Component, Renderer2, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,13 +7,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnDestroy {
+export class HomePageComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription[] = [];
   private fragment: string;
 
   constructor( private route: ActivatedRoute, private renderer: Renderer2 ) {
+  }
 
+  ngOnInit(): void {
     // keep track of subscription by pushing to subscriptions array
     this.subscriptions.push(
       // subscribe to the state of the url fragment
