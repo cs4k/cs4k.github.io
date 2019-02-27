@@ -25,9 +25,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
 import { TeamComponent } from './components/team/team.component';
@@ -37,9 +35,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavComponent,
-    HeaderComponent,
     HomePageComponent,
     BreakpointReactDirective,
     TeamComponent,

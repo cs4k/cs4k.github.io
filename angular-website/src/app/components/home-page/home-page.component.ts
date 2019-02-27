@@ -1,38 +1,55 @@
-// import {
-//   BreakpointSubscriber
-// } from './../../classes/breakpoint-subscriber.class';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-// import {
-//   BreakpointObserver,
-//   Breakpoints,
-//   BreakpointState
-// } from '@angular/cdk/layout';
+import { Component, Renderer2, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnDestroy {
 
-  // IMPORTANT make sure to call .unsubscribe() in ngOnDestroy
-  // to prevent memory leaks!
-  // private breakpointSubscriber: BreakpointSubscriber;
+  private subscriptions: Subscription[] = [];
+  private fragment: string;
 
-  constructor(
-    // private breakpointObserver: BreakpointObserver
-  ) {
-    // IMPORTANT make sure to call .unsubscribe() in ngOnDestroy
-    // to prevent memory leaks!
-    // this.breakpointSubscriber = new BreakpointSubscriber(
-    //   this.breakpointObserver
-    // );
+  constructor( private route: ActivatedRoute, private renderer: Renderer2 ) {
+
+    // keep track of subscription by pushing to subscriptions array
+    this.subscriptions.push(
+      // subscribe to the state of the url fragment
+      this.route.fragment.subscribe(
+        // only call scrollToSection if fragment is defined
+        fragment => fragment ? this.scrollToSection(fragment) : undefined
+      )
+    );
   }
 
-  ngOnInit() {
+  /**
+   * Selects one of the page's sections and scrolls to it.
+   */
+  private scrollToSection( sectionFragment: string ): void {
+
+    // get section's root element reference
+    const section = this.renderer.selectRootElement('#' + sectionFragment);
+
+    // Assume that it's an Element, then scroll into view.
+    (section as Element).scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
   }
 
-  ngOnDestroy() {
-    // this.breakpointSubscriber.unsubscribe();
+  ngOnDestroy(): void {
+    // prevent memory leaks
+    this.unsubscribeAll();
+  }
+
+  /**
+   * Unsubscribe from all subscriptions lest there be memory leaks.
+   */
+  private unsubscribeAll(): void {
+    for ( const sub of this.subscriptions ) {
+      sub.unsubscribe();
+    }
   }
 }
