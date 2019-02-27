@@ -68,7 +68,7 @@
     }
   }
 
-  @include media-breakpoint-down(lg) {
+  @include media-breakpoint-down(md) {
     #title-horizontal {
       justify-content: center;
 
@@ -79,8 +79,11 @@
 
         #title-with-logo {
           height: auto;
-          width: 100%;
+          width: auto;
           object-fit: contain;
+
+          background-color: rgba($color: #000000, $alpha: 0.4);
+          border-radius: 10px;
         }
       }
     }
