@@ -19,7 +19,7 @@ export class HomePageComponent implements OnDestroy {
       // subscribe to the state of the url fragment
       this.route.fragment.subscribe(
         // only call scrollToSection if fragment is defined
-        fragment => fragment ? this.scrollToSection(fragment) : undefined
+        fragment => {if (fragment) { this.scrollToSection(fragment); }}
       )
     );
   }
@@ -30,12 +30,15 @@ export class HomePageComponent implements OnDestroy {
   private scrollToSection( sectionFragment: string ): void {
 
     // get section's root element reference
-    const section = this.renderer.selectRootElement('#' + sectionFragment);
+    const section = this.renderer.selectRootElement(
+      '#' + sectionFragment, true
+    );
+    console.log(section);
 
     // Assume that it's an Element, then scroll into view.
     (section as Element).scrollIntoView({
       behavior: 'smooth',
-      block: 'center'
+      block: 'start'
     });
   }
 
