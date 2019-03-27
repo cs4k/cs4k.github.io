@@ -32,6 +32,7 @@ import { TeamComponent } from './components/team/team.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { VolunteerPageComponent } from './components/volunteer-page/volunteer-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     TeamComponent,
     FaqComponent,
     ContactUsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    VolunteerPageComponent
   ],
   imports: [
     BrowserModule,
