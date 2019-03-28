@@ -1,4 +1,5 @@
 import { Component, Renderer2, OnDestroy, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,13 +11,26 @@ import { ActivatedRoute } from '@angular/router';
 export class HomePageComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription[] = [];
-  private fragment: string;
 
-  constructor( private route: ActivatedRoute, private renderer: Renderer2 ) {
+  // delete when done
+  data = {
+    name: 'Michael Jordan',
+    bio: 'Former baseball player',
+    image: '/assets/logo.png'
+  };
+
+  constructor(
+    private route: ActivatedRoute,
+    private renderer: Renderer2,
+    private title: Title,
+    private meta: Meta
+  ) {
   }
 
   ngOnInit(): void {
-    // keep track of subscription by pushing to subscriptions array
+
+    // Respond to nav-bar changes by scrolling to the proper section.
+    // Keep track of subscription by pushing to subscriptions array.
     this.subscriptions.push(
       // subscribe to the state of the url fragment
       this.route.fragment.subscribe(
@@ -24,6 +38,16 @@ export class HomePageComponent implements OnDestroy, OnInit {
         fragment => {if (fragment) { this.scrollToSection(fragment); }}
       )
     );
+
+    // delete when done
+    this.title.setTitle(this.data.name);
+    this.meta.addTags([
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'og:url', content: '/home' },
+      { name: 'og:title', content: this.data.name },
+      { name: 'og:description', content: this.data.bio },
+      { name: 'og:image', content: this.data.image }
+    ]);
   }
 
   /**
@@ -35,7 +59,6 @@ export class HomePageComponent implements OnDestroy, OnInit {
     const section = this.renderer.selectRootElement(
       '#' + sectionFragment, true
     );
-    console.log(section);
 
     // Assume that it's an Element, then scroll into view.
     (section as Element).scrollIntoView({

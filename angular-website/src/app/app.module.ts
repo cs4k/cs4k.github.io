@@ -27,7 +27,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthService } from './services/auth.service';
 import { NavComponent } from './components/nav/nav.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { BreakpointReactDirective } from './directives/breakpoint-react.directive';
 import { TeamComponent } from './components/team/team.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
@@ -38,7 +37,6 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
     AppComponent,
     NavComponent,
     HomePageComponent,
-    BreakpointReactDirective,
     TeamComponent,
     FaqComponent,
     ContactUsComponent,
@@ -46,7 +44,7 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
     VolunteerPageComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
