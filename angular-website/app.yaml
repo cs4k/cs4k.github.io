@@ -1,0 +1,2 @@
+# Required for AppEngine, which is used for server-side-rendering.
+runtime: nodejs8

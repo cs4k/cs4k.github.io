@@ -10,13 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 export class HomePageComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription[] = [];
-  private fragment: string;
 
-  constructor( private route: ActivatedRoute, private renderer: Renderer2 ) {
+  constructor(
+    private route: ActivatedRoute,
+    private renderer: Renderer2
+  ) {
   }
 
   ngOnInit(): void {
-    // keep track of subscription by pushing to subscriptions array
+
+    // Respond to nav-bar changes by scrolling to the proper section.
+    // Keep track of subscription by pushing to subscriptions array.
     this.subscriptions.push(
       // subscribe to the state of the url fragment
       this.route.fragment.subscribe(
@@ -35,7 +39,6 @@ export class HomePageComponent implements OnDestroy, OnInit {
     const section = this.renderer.selectRootElement(
       '#' + sectionFragment, true
     );
-    console.log(section);
 
     // Assume that it's an Element, then scroll into view.
     (section as Element).scrollIntoView({
