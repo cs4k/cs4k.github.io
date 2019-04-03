@@ -32,6 +32,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { VolunteerPageComponent } from './components/volunteer-page/volunteer-page.component';
+import { FeaturedVolunteersComponent } from './components/featured-volunteers/featured-volunteers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
     FaqComponent,
     ContactUsComponent,
     AboutUsComponent,
-    VolunteerPageComponent
+    VolunteerPageComponent,
+    FeaturedVolunteersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
