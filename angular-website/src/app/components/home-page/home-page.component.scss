@@ -40,11 +40,13 @@
   $img-height: 221px;
   $img-width: 683px;
 
+  $title-horizontal-top: 15vw;
+
   #title-horizontal {
     width: 100%;
     position: absolute;
-    top: 15vw;
-    // turn into a flexbox container
+    top: $title-horizontal-top;
+    
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -68,9 +70,27 @@
     }
   }
 
+  #apply-btn-horizontal {
+    width: 100%;
+    position: absolute;
+    top: calc(#{$title-horizontal-top} + #{$img-height});
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+  }
+
   @include media-breakpoint-down(md) {
+
+    // overrride title-horizontal-top
+    $title-horizontal-top: 15vw;
+
     #title-horizontal {
-      top: 25vw;
+      top: $title-horizontal-top;//25vw;
       justify-content: center;
 
       #title-wrapper {
@@ -87,6 +107,10 @@
           border-radius: 10px;
         }
       }
+    }
+
+    #apply-btn-horizontal {
+      top: calc(#{$title-horizontal-top} + #{$img-height});
     }
   }
 
