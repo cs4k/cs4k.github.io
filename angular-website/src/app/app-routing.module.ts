@@ -6,7 +6,7 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
-  { path: 'volunteers', component: VolunteerPageComponent }
+  // { path: 'volunteers', component: VolunteerPageComponent }
   // TODO give 404 error to the catch-all path '**'
 ];
 

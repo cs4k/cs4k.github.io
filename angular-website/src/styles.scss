@@ -10,12 +10,17 @@ $primary: #FC903C;
 // body background color
 $body-bg: #333366;
 
+// Recommended font-stack
+// $avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+
 html {
   // The width of the vertical scrollbar creates a small -yet insuferable- amount
   // of horizontal wiggle room.
   // The issue is described here: https://stackoverflow.com/questions/30489594/prevent-100vw-from-creating-horizontal-scroll/30504010
   // My child, I'm going to go insane if the user is allowed to scroll horizontally.
   overflow-x: hidden;
+  
+  scroll-behavior: smooth;
 }
 
 // The Bootstrap UI framework.

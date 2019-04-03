@@ -1,5 +1,7 @@
+$avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+
 * {
-  font-family: Avenir, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: $avenir-font-stack;
   font-size: 2vw;
   font-weight: lighter;
   text-align: left;

@@ -42,7 +42,6 @@ export class HomePageComponent implements OnDestroy, OnInit {
 
     // Assume that it's an Element, then scroll into view.
     (section as Element).scrollIntoView({
-      behavior: 'smooth',
       block: 'start'
     });
   }
