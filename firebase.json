@@ -7,7 +7,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "angular-website/dist/angular-website",
+    "public": "angular-website/dist/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
