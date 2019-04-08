@@ -20,6 +20,7 @@ html {
   // My child, I'm going to go insane if the user is allowed to scroll horizontally.
   overflow-x: hidden;
   
+  // Only supported on some browsers.
   scroll-behavior: smooth;
 }
 

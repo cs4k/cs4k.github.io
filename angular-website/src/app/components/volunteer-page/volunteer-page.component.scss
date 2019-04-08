@@ -1,0 +1,22 @@
+$avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+
+#foreground {
+  width: 100vw;
+  position: absolute;
+  // ensure that foreground's z-index is greater than background's
+  z-index: -1;
+
+  $sepatation: 10vw;
+
+  .section {
+    // take up foreground width
+    width: 100%;
+
+    margin-bottom: $sepatation;
+
+    // The last section
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
