@@ -1,0 +1,64 @@
+// Had trouble putting this in styles.css
+// https://github.com/PatrickJS/angular-starter/issues/924
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+$avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+$xs_px: 575.98px;
+
+* {
+  margin: 0;
+}
+
+.text {
+  font-family: $avenir-font-stack;
+}
+
+#overall-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  #titles {
+    text-transform: uppercase;
+    // display: inline;
+  }
+
+  #picture-and-caption {
+    flex: 1 1 60%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    #picture-container, #caption-container {
+      display: flex;
+      flex: 1 1 45%;
+    }
+
+    #caption-container {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      #caption, #caption-credit {
+        width: 100%;
+      }
+
+      #caption-credit {
+        align-self: flex-end;
+      }
+    }
+
+    @media (max-width: $xs_px) {
+      width: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
