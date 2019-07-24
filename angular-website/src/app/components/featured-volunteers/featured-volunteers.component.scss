@@ -38,10 +38,21 @@ $xs_px: 575.98px;
 
     #picture-container, #caption-container {
       display: flex;
-      flex: 1 1 45%;
+    }
+
+    #picture-container {
+      // debugging color
+      background-color: red;
+
+      width: 50%
     }
 
     #caption-container {
+      // debugging color
+      background-color: green;
+
+      width: 40%;
+
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
