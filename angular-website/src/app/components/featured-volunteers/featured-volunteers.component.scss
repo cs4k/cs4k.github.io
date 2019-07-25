@@ -11,6 +11,7 @@ $xs_px: 575.98px;
 
 .text {
   font-family: $avenir-font-stack;
+  color: white;
 }
 
 #overall-container {
@@ -24,12 +25,14 @@ $xs_px: 575.98px;
   #titles {
     text-transform: uppercase;
     text-align: center;
+    font-size: 5vw;
+
+    @media (max-width: $xs_px) {
+      font-size: 20pt;
+    }
   }
 
   #picture-and-caption {
-    // debugging color
-    background-color: yellow;
-
     width: 70%;
     flex: 1 1 auto;
 
@@ -44,11 +47,11 @@ $xs_px: 575.98px;
     }
 
     #picture-container {
-      // debugging color
-      background-color: red;
-
       width: 50%;
-      padding: 0.75em;
+      padding: 1rem;
+      box-sizing: border-box;
+      border-radius: 0.5rem;
+      border: 0.5rem solid rgba(255, 255, 255, 0.25);
 
       #picture {
         width: 100%;
@@ -65,6 +68,11 @@ $xs_px: 575.98px;
       justify-content: space-between;
       align-items: center;
 
+      // assume that all children contain text.
+      * {
+        font-size: 1rem;
+      }
+
       #caption, #caption-credit {
         width: 100%;
       }
@@ -79,6 +87,14 @@ $xs_px: 575.98px;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+
+      #titles {
+        font-size: 14pt;
+      }
+
+      #picture-container {
+        border-radius: 0;
+      }
 
       #picture-container, #caption-container {
         width: 75%;
