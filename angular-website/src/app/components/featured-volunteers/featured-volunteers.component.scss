@@ -23,6 +23,8 @@ $xs_px: 575.98px;
   align-items: center;
 
   #titles {
+    margin-bottom: 7.5vh;
+
     text-transform: uppercase;
     text-align: center;
     font-size: 5vw;
@@ -59,9 +61,6 @@ $xs_px: 575.98px;
     }
 
     #caption-container {
-      // debugging color
-      background-color: green;
-
       width: 40%;
 
       flex-direction: column;
@@ -103,6 +102,14 @@ $xs_px: 575.98px;
 
       #caption-container {
         margin-top: 10vh;
+
+        #caption {
+          text-align: left;
+        }
+
+        #caption-credit {
+          text-align: right;
+        }
       }
     }
   }
