@@ -92,12 +92,16 @@ $xs_px: 575.98px;
         font-size: 14pt;
       }
 
+      #picture-container, #caption-container {
+        width: 75%;
+      }
+
       #picture-container {
         border-radius: 0;
       }
 
-      #picture-container, #caption-container {
-        width: 75%;
+      #caption-container {
+        margin-top: 10vh;
       }
     }
   }
