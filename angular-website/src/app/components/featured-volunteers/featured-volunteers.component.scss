@@ -47,7 +47,11 @@ $xs_px: 575.98px;
       // debugging color
       background-color: red;
 
-      width: 50%
+      width: 50%;
+
+      #picture {
+        width: 100%;
+      }
     }
 
     #caption-container {
