@@ -33,17 +33,21 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { VolunteerPageComponent } from './components/volunteer-page/volunteer-page.component';
 import { FeaturedVolunteersComponent } from './components/featured-volunteers/featured-volunteers.component';
+import { PhotosComponent } from './components/photos/photos.component';
+import { NewsComponent } from './components/news/news.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomePageComponent,
+    PhotosComponent,
     TeamComponent,
     FaqComponent,
     ContactUsComponent,
     AboutUsComponent,
     VolunteerPageComponent,
-    FeaturedVolunteersComponent
+    FeaturedVolunteersComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
