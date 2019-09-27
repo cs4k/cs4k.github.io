@@ -44,6 +44,10 @@ $avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
 
   $title-horizontal-top: 15vw;
 
+  #title-button-wrapper {
+    padding-left: 10%
+  }
+
   #title-horizontal {
     width: 100%;
     position: absolute;
@@ -77,16 +81,19 @@ $avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
     position: absolute;
     top: calc(#{$title-horizontal-top} + #{$img-height});
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     padding-top: 2.5vw;
     padding-bottom: 2.5vw;
 
     #apply-btn {
       font-family: $avenir-font-stack;
+    }
+
+    #p-deadline {
+      padding-top: 1vw;
+      font-family: $avenir-font-stack;
+      font-size: 1.25rem;
+      padding-left: 2vw;
+      color: #fff!important;
     }
   }
 
