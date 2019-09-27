@@ -1,0 +1,78 @@
+$avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+
+* {
+  font-family: $avenir-font-stack;
+  font-weight: lighter;
+  text-align: left;
+  color: white;
+
+}
+
+.quarter {
+  margin-bottom: 3%;
+  font-size: 18pt;
+}
+/*
+.temp-border {
+  border: 2px solid red;
+}*/
+.header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin: 5%;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 300;
+}
+
+#container-box{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-direction: column;
+  
+  padding: 2%;
+  #aa {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  #pic {
+    max-width:100%;
+    max-height:100%;
+  }
+
+  #forepara {
+    font-size: 18pt;
+  }
+
+
+}
+
+@media (max-width: 500px) {
+  h1{
+    margin-bottom: 7vw;
+    margin-top: 8vw;
+  }
+  #aa {
+    flex-direction: column!important;
+  }
+
+  #partner-pic{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+  }
+}
+//color: #6c757d!important;
