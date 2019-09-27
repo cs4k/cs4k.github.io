@@ -88,8 +88,16 @@ $avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
       font-family: $avenir-font-stack;
     }
 
-    #p-deadline {
+    .p-deadline {
       padding-top: 1vw;
+      font-family: $avenir-font-stack;
+      font-size: 1.25rem;
+      padding-left: 2vw;
+      color: #fff!important;
+    }
+
+    .p-info {
+      // padding-top: vw;
       font-family: $avenir-font-stack;
       font-size: 1.25rem;
       padding-left: 2vw;
