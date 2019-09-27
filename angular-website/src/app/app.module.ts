@@ -35,6 +35,7 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
 import { FeaturedVolunteersComponent } from './components/featured-volunteers/featured-volunteers.component';
 import { PhotosComponent } from './components/photos/photos.component';
 import { NewsComponent } from './components/news/news.component';
+import { SchoolContactComponent } from './components/school-contact/school-contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { NewsComponent } from './components/news/news.component';
     VolunteerPageComponent,
     FeaturedVolunteersComponent,
     NewsComponent,
+    SchoolContactComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
