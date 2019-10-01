@@ -35,12 +35,16 @@ import { VolunteerPageComponent } from './components/volunteer-page/volunteer-pa
 import { FeaturedVolunteersComponent } from './components/featured-volunteers/featured-volunteers.component';
 import { CurrentVolunteersComponent } from './components/current-volunteers/current-volunteers.component';
 import { PastVolunteersComponent } from './components/past-volunteers/past-volunteers.component';
+import { PhotosComponent } from './components/photos/photos.component';
+import { NewsComponent } from './components/news/news.component';
+import { SchoolContactComponent } from './components/school-contact/school-contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomePageComponent,
+    PhotosComponent,
     TeamComponent,
     FaqComponent,
     ContactUsComponent,
@@ -48,7 +52,9 @@ import { PastVolunteersComponent } from './components/past-volunteers/past-volun
     VolunteerPageComponent,
     FeaturedVolunteersComponent,
     CurrentVolunteersComponent,
-    PastVolunteersComponent
+    PastVolunteersComponent,
+    NewsComponent,
+    SchoolContactComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -10,32 +10,38 @@
   <img src="/assets/images/space-background.png" id="space-background">
 </div>
 
-<div id="foreground">
+<div id="foreground" class="container">
 
   <!--
     title-horizontal is the horizontal block in which the title resides. 
     It should stretch across the entire page width.
   -->
-  <div id="title-horizontal" class="temp-red-border">
-    <span id="title-wrapper" class="temp-red-border">
-      
-      <!-- last time we checked, this image was 683 × 221 -->
-      <img id="title-with-logo"
-        src="/assets/images/logo-with-titles.png"
-      />
-    </span>
+  <div class="d-flex flex-column" id="title-button-wrapper">
+    <div id="title-horizontal" class="temp-red-border">
+      <span id="title-wrapper" class="temp-red-border">
+        
+        <!-- last time we checked, this image was 683 × 221 -->
+        <img id="title-with-logo"
+          src="/assets/images/logo-with-titles.png"
+        />
+      </span>
+    </div>
+  
+    <div id="apply-btn-horizontal">
+      <a href="https://goo.gl/4us6hW">
+        <button id="apply-btn"
+          class="btn btn-primary btn-lg bg-primary text-white"
+          type="button"
+        >
+          Apply Today! (Volunteers)
+        </button>
+      </a>
+      <p class="p-deadline">Deadline: Oct 11th</p>
+      <p class="p-info">Early Birds are accepted. </p>
+      <p class="p-info">We accept applications on a on rolling basis</p>
+    </div>
   </div>
 
-  <div id="apply-btn-horizontal">
-    <a href="https://goo.gl/4us6hW">
-      <button id="apply-btn"
-        class="btn btn-primary btn-lg bg-primary text-white"
-        type="button"
-      >
-        Apply Today!
-      </button>
-    </a>
-  </div>
 
   <div id="sections">
     <!-- the id's are essential for navigation to work. -->
@@ -43,14 +49,26 @@
     <span id="about-us" class="anchor"></span>
     <app-about-us class="section"></app-about-us>
 
-    <span id="team" class="anchor"></span>
-    <app-team id="team" class="section"></app-team>
+    <span id="news" class="anchor"></span>
+    <app-news class="section"></app-news>
+
+    <span id="school-contact" class="anchor"></span>
+    <app-school-contact id="school-contact" class="section"></app-school-contact>
     
+    <span id="photos" class="anchor"></span>
+    <app-photos id="photos" class="section"></app-photos>
+
     <span id="faq" class="anchor"></span>
     <app-faq id="faq" class="section"></app-faq>
     
+    <span id="team" class="anchor"></span>
+    <app-team id="team" class="section"></app-team>
+    
     <span id="contact-us" class="anchor"></span>
     <app-contact-us id="contact-us" class="section"></app-contact-us>
+
+
+
   </div>
 </div>
 
