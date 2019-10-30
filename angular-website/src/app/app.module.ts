@@ -38,6 +38,7 @@ import { PastVolunteersComponent } from './components/past-volunteers/past-volun
 import { PhotosComponent } from './components/photos/photos.component';
 import { NewsComponent } from './components/news/news.component';
 import { SchoolContactComponent } from './components/school-contact/school-contact.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SchoolContactComponent } from './components/school-contact/school-conta
     CurrentVolunteersComponent,
     PastVolunteersComponent,
     NewsComponent,
-    SchoolContactComponent
+    SchoolContactComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
