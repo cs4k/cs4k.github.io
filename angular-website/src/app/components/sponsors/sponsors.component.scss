@@ -1,0 +1,53 @@
+$avenir-font-stack: Avenir, Verdana, Geneva, Tahoma, sans-serif !default;
+
+* {
+  font-family: $avenir-font-stack;
+  // font-size: 2vw;
+  font-weight: lighter;
+  text-align: left;
+  color: white;
+}
+
+.header {
+  align-self: left;
+
+  font-size: 35pt;
+  letter-spacing: 0.1em;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+.title {
+  font-weight: normal;
+  font-size: 20pt;
+  padding: 2em 1em 1em 1em;
+  color: #ea9350;
+}
+
+li {
+  font-size: 1.3em;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "•";
+  color: #ea9350;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+#background {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 0px;
+  background: #4f4f74;
+}
+
+#rightsection {
+  margin-left: 2em;
+  margin-right: 1em;
+}
