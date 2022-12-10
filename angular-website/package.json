@@ -34,7 +34,7 @@
     "@schematics/angular": "^7.3.9",
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.9",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^5.11.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
